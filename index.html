@@ -3,175 +3,143 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Court Compass — Kennedy-style preview</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,300..900;1,8..144,300..900&family=Poppins:wght@400;600;700;800;900&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<title>Court Compass — Family Court Intelligence</title>
 <style>
   :root{
-    --paper:#f5efe2;        /* cream */
-    --paper-2:#efe7d4;
-    --ink:#161310;          /* near-black */
-    --ink-soft:#3a342c;
-    --rule:#1a1612;
-    --red:#b21f1f;          /* sales-letter red ink */
-    --highlight:#fff176;    /* yellow highlighter */
-    --highlight-2:#ffe066;
-    --cta:#c1272d;          /* CTA red */
-    --cta-hover:#9e1d22;
-    --navy:#0f1b2d;
-    --gold:#a9842e;
-    --maxw:720px;
+    --bg:#ffffff;
+    --ink:#1a1a1a;
+    --ink-soft:#666666;
+    --red:#cc0000;
+    --cta:#cc0000;
+    --cta-hover:#aa0000;
+    --maxw:680px;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
-    background:var(--paper);
+    background:var(--bg);
     color:var(--ink);
-    font-family:"Roboto Serif", Georgia, serif;
+    font-family:Georgia,"Times New Roman",Times,serif;
     font-size:19px;
-    line-height:1.65;
+    line-height:1.75;
     -webkit-font-smoothing:antialiased;
-    background-image:
-      radial-gradient(rgba(0,0,0,.03) 1px, transparent 1px);
-    background-size: 3px 3px;
   }
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
-  .wide{max-width:980px;margin:0 auto;padding:0 22px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .wide{max-width:900px;margin:0 auto;padding:0 24px}
 
   /* Top banner */
   .topbar{
-    background:var(--ink); color:#f3ead3;
-    text-align:center; padding:8px 14px;
-    font-family:"Poppins",sans-serif; font-weight:700;
-    font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+    background:#1a1a1a; color:#fff;
+    text-align:center; padding:10px 16px;
+    font-family:Georgia,serif; font-size:13px;
+    letter-spacing:.05em;
   }
 
   /* Masthead */
   .masthead{
-    text-align:center; padding:38px 22px 10px;
-    border-bottom:1px solid rgba(0,0,0,.15);
+    text-align:center; padding:30px 22px 20px;
+    border-bottom:2px solid #1a1a1a;
   }
   .masthead .kicker{
-    font-family:"Poppins",sans-serif; font-weight:700;
-    letter-spacing:.32em; text-transform:uppercase;
-    font-size:12px; color:var(--ink-soft);
+    font-size:14px; color:var(--ink-soft); margin-bottom:8px;
   }
   .masthead h1.brand{
-    font-family:"Roboto Serif",serif; font-weight:900;
-    font-size:46px; letter-spacing:.02em; margin:6px 0 4px;
+    font-family:Georgia,serif; font-weight:bold;
+    font-size:36px; letter-spacing:.1em; margin:0 0 4px;
     text-transform:uppercase;
   }
   .masthead .dateline{
-    font-family:"Poppins",sans-serif; font-size:12px;
-    letter-spacing:.18em; text-transform:uppercase;
-    color:var(--ink-soft);
+    font-size:13px; color:var(--ink-soft);
   }
-  .double-rule{border-top:3px double var(--rule); margin:18px auto 0; max-width:980px}
+  .double-rule{border-top:3px double #1a1a1a; margin:14px auto 0; max-width:900px}
 
   /* Headlines */
   h1.lead, h2.lead{
-    font-family:"Roboto Serif",serif; font-weight:900;
-    font-size:46px; line-height:1.08;
-    text-align:center; margin:48px 0 10px;
-    letter-spacing:-.01em;
+    font-family:Georgia,serif; font-weight:bold;
+    font-size:36px; line-height:1.2;
+    text-align:center; margin:44px 0 10px;
   }
-  h2.lead{font-size:38px}
+  h2.lead{font-size:30px}
   h3.sub{
-    font-family:"Roboto Serif",serif; font-weight:800;
-    font-size:26px; line-height:1.25; margin:36px 0 14px;
+    font-family:Georgia,serif; font-weight:bold;
+    font-size:24px; line-height:1.3; margin:36px 0 14px;
   }
   .deck{
-    font-family:"Roboto Serif",serif; font-style:italic;
-    font-size:22px; text-align:center; color:var(--ink-soft);
-    margin:0 auto 28px; max-width:640px;
+    font-style:italic; font-size:20px;
+    text-align:center; color:var(--ink-soft);
+    margin:0 auto 28px; max-width:600px;
   }
 
   /* Body prose */
-  p{margin:0 0 18px}
-  .lead-p::first-letter{
-    font-family:"Roboto Serif",serif; font-weight:900;
-    float:left; font-size:64px; line-height:.85;
-    padding:6px 10px 0 0; color:var(--ink);
-  }
-  mark.h{background:linear-gradient(transparent 55%, var(--highlight) 55%); padding:0 2px}
-  mark.h2{background:linear-gradient(transparent 55%, var(--highlight-2) 55%); padding:0 2px}
-  .red{color:var(--red); font-weight:700}
-  .u{ text-decoration: underline; text-decoration-thickness:2px; text-underline-offset:3px}
-  strong{font-weight:800}
+  p{margin:0 0 20px}
+  mark.h{background:transparent; padding:0}
+  mark.h2{background:transparent; padding:0}
+  .red{color:var(--red); font-weight:bold}
+  .u{text-decoration:underline}
+  strong{font-weight:bold}
 
   /* Section spacing */
   section{padding:28px 0}
   .divider{
     text-align:center; margin:36px 0; color:var(--ink-soft);
-    letter-spacing:.5em; font-family:"Poppins",sans-serif; font-size:14px;
+    letter-spacing:.4em; font-size:14px;
   }
-  hr.thin{border:0;border-top:1px solid rgba(0,0,0,.18); margin:36px 0}
+  hr.thin{border:0;border-top:1px solid #ddd; margin:36px 0}
 
   /* CTA */
   .cta-wrap{text-align:center; margin:30px 0 12px}
   .cta{
     display:inline-block;
     background:var(--cta); color:#fff;
-    font-family:"Poppins",sans-serif; font-weight:800;
-    text-transform:uppercase; letter-spacing:.06em;
-    font-size:18px; padding:18px 26px; line-height:1.15;
-    border:2px solid #6e0e12;
-    box-shadow: 0 4px 0 #6e0e12;
-    text-decoration:none;
-    border-radius:4px;
+    font-family:Georgia,serif; font-weight:bold;
+    font-size:17px; padding:16px 24px; line-height:1.2;
+    text-decoration:none; border-radius:4px;
     max-width:560px;
   }
   .cta:hover{background:var(--cta-hover)}
-  .cta small{display:block; font-weight:600; font-size:12px; opacity:.9; margin-top:4px; letter-spacing:.12em}
+  .cta small{display:block; font-weight:normal; font-size:12px; margin-top:4px; opacity:.9}
   .cta-alt{
     display:inline-block; margin-top:14px;
-    font-family:"Poppins",sans-serif; font-weight:700;
     color:var(--ink); text-decoration:underline; font-size:14px;
-    letter-spacing:.05em; text-transform:uppercase;
   }
 
   /* Boxed callouts */
   .box{
-    border:2px solid var(--ink); background:#fbf6e8;
-    padding:22px 24px; margin:26px 0;
+    border:2px solid var(--ink); background:#f9f9f9;
+    padding:20px 22px; margin:24px 0;
   }
-  .box.red{border-color:var(--red); background:#fff5f0}
+  .box.red{border-color:var(--red); background:#fff5f5}
   .box h4{
-    font-family:"Roboto Serif",serif; font-weight:900;
-    font-size:22px; margin:0 0 10px; text-transform:uppercase;
-    letter-spacing:.02em;
+    font-family:Georgia,serif; font-weight:bold;
+    font-size:20px; margin:0 0 10px; text-transform:uppercase;
   }
   .pullquote{
-    border-left:6px solid var(--ink);
-    padding:6px 0 6px 18px; margin:28px 0;
-    font-family:"Roboto Serif",serif; font-style:italic;
-    font-size:24px; line-height:1.35;
+    border-left:5px solid var(--ink);
+    padding:4px 0 4px 18px; margin:28px 0;
+    font-style:italic; font-size:22px; line-height:1.4;
   }
   .pullquote cite{
-    display:block; margin-top:10px;
-    font-family:"Poppins",sans-serif; font-style:normal;
-    font-weight:700; font-size:13px; letter-spacing:.14em;
+    display:block; margin-top:8px; font-style:normal;
+    font-size:13px; letter-spacing:.1em;
     text-transform:uppercase; color:var(--ink-soft);
   }
 
   /* Testimonial card */
   .tcard{
-    display:grid; grid-template-columns:96px 1fr; gap:18px;
-    align-items:start; padding:20px; background:#fbf6e8;
-    border:1px solid rgba(0,0,0,.2); margin:22px 0;
+    display:grid; grid-template-columns:88px 1fr; gap:16px;
+    align-items:start; padding:20px; background:#f9f9f9;
+    border:1px solid #ddd; margin:22px 0;
   }
   .tcard .av{
-    width:96px;height:96px;border-radius:50%;
-    background:#d9cfb6; border:1px solid rgba(0,0,0,.25);
+    width:88px;height:88px;border-radius:50%;
+    background:#ddd;
     display:flex; align-items:center; justify-content:center;
-    font-family:"Roboto Serif",serif; font-weight:900; color:#9a8d6a;
-    font-size:28px;
+    font-weight:bold; color:#888; font-size:26px;
   }
   .tcard p{margin:0 0 6px; font-size:17px; line-height:1.55; font-style:italic}
   .tcard .who{
-    font-family:"Poppins",sans-serif; font-weight:700; font-size:12px;
-    letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft);
+    font-size:12px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--ink-soft);
   }
 
   /* Stat row */
@@ -181,25 +149,25 @@
   }
   .stat{text-align:center}
   .stat .n{
-    font-family:"Roboto Serif",serif; font-weight:900;
-    font-size:72px; line-height:1; color:var(--red);
+    font-family:Georgia,serif; font-weight:bold;
+    font-size:64px; line-height:1; color:var(--red);
   }
-  .stat p{font-size:15px; color:var(--ink-soft)}
-  @media (max-width:640px){
+  .stat p{font-size:14px; color:var(--ink-soft)}
+  @media(max-width:600px){
     .stats{grid-template-columns:1fr}
-    .stat .n{font-size:54px}
-    h1.lead,h2.lead{font-size:34px}
+    .stat .n{font-size:48px}
+    h1.lead,h2.lead{font-size:28px}
   }
 
   /* Checklist */
   ul.check{list-style:none; padding:0; margin:14px 0 22px}
   ul.check li{
-    padding:8px 0 8px 30px; position:relative; font-size:18px;
-    border-bottom:1px dashed rgba(0,0,0,.18);
+    padding:8px 0 8px 28px; position:relative; font-size:18px;
+    border-bottom:1px solid #eee;
   }
   ul.check li:before{
-    content:"✔"; position:absolute; left:0; top:6px;
-    color:var(--red); font-weight:900;
+    content:"✔"; position:absolute; left:0; top:8px;
+    color:var(--red);
   }
 
   /* Tools grid */
@@ -208,63 +176,55 @@
     margin:18px 0;
   }
   .tools .t{
-    border:1px solid rgba(0,0,0,.25); padding:16px; background:#fbf6e8;
+    border:1px solid #ddd; padding:16px; background:#f9f9f9;
   }
   .tools .t .num{
-    font-family:"Roboto Serif",serif; font-weight:900;
-    color:var(--red); font-size:22px; margin-bottom:4px;
+    font-weight:bold; color:var(--red); font-size:20px; margin-bottom:4px;
   }
   .tools .t h5{
-    font-family:"Roboto Serif",serif; font-weight:800; font-size:18px;
-    margin:0 0 6px;
+    font-weight:bold; font-size:17px; margin:0 0 6px;
   }
-  .tools .t p{font-size:15px; line-height:1.5; color:var(--ink-soft); margin:0}
-  @media (max-width:640px){.tools{grid-template-columns:1fr}}
+  .tools .t p{font-size:14px; line-height:1.5; color:var(--ink-soft); margin:0}
+  @media(max-width:600px){.tools{grid-template-columns:1fr}}
 
   /* Pricing */
   .price-grid{
     display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:18px 0;
   }
   .price{
-    border:2px solid var(--ink); padding:20px; background:#fbf6e8;
+    border:2px solid var(--ink); padding:20px; background:#f9f9f9;
   }
-  .price.featured{border-color:var(--red); background:#fff5f0; position:relative}
+  .price.featured{border-color:var(--red); background:#fff5f5; position:relative}
   .price.featured:before{
     content:"MOST CHOSEN"; position:absolute; top:-12px; left:14px;
-    background:var(--red); color:#fff; font-family:"Poppins",sans-serif;
-    font-weight:800; font-size:11px; letter-spacing:.18em; padding:4px 8px;
+    background:var(--red); color:#fff;
+    font-size:11px; letter-spacing:.15em; padding:4px 8px;
   }
-  .price .name{font-family:"Poppins",sans-serif; font-weight:700; letter-spacing:.14em;
-    font-size:12px; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px}
-  .price .amt{font-family:"Roboto Serif",serif; font-weight:900; font-size:42px; line-height:1}
-  .price .sub{font-family:"Poppins",sans-serif; font-size:12px; letter-spacing:.06em;
-    color:var(--ink-soft); margin:4px 0 12px}
-  .price p.d{font-size:15px; line-height:1.5; margin:0 0 14px}
-  @media (max-width:640px){.price-grid{grid-template-columns:1fr}}
+  .price .name{font-size:12px; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--ink-soft); margin-bottom:6px}
+  .price .amt{font-weight:bold; font-size:40px; line-height:1}
+  .price .sub{font-size:12px; color:var(--ink-soft); margin:4px 0 12px}
+  .price p.d{font-size:14px; line-height:1.5; margin:0 0 14px}
+  @media(max-width:600px){.price-grid{grid-template-columns:1fr}}
 
   /* Signature */
   .signoff{margin:36px 0 10px}
-  .sig{
-    font-family:"Dancing Script", cursive;
-    font-size:54px; line-height:1; color:var(--ink);
-  }
-  .sigline{font-family:"Poppins",sans-serif; font-weight:700; font-size:13px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft); margin-top:6px}
+  .sig{font-size:42px; font-style:italic; line-height:1; color:var(--ink)}
+  .sigline{font-size:13px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink-soft); margin-top:6px}
 
   /* PS */
   .ps{margin:12px 0; font-size:18px}
   .ps strong{color:var(--red)}
 
   /* Footer */
-  footer{padding:26px 22px 50px; text-align:center; color:var(--ink-soft); font-size:13px}
-  footer .brand{font-family:"Roboto Serif",serif; font-weight:900; letter-spacing:.18em; text-transform:uppercase; color:var(--ink); margin-bottom:8px}
+  footer{padding:26px 22px 50px; text-align:center; color:var(--ink-soft);
+    font-size:13px; border-top:1px solid #ddd; margin-top:40px}
+  footer .brand{font-weight:bold; letter-spacing:.15em; text-transform:uppercase;
+    color:var(--ink); margin-bottom:8px}
 
   /* Arrow accent */
-  .arrow{
-    display:inline-block; transform:rotate(-6deg);
-    font-family:"Dancing Script",cursive; color:var(--red); font-size:28px;
-    margin:0 6px;
-  }
+  .arrow{display:inline-block; transform:rotate(-6deg); color:var(--red); font-size:24px; margin:0 4px}
 
   /* References */
   .refs{font-size:12px; color:var(--ink-soft); line-height:1.6}
@@ -352,7 +312,7 @@
 
   <p>John worked with a doctor. A professional man. Educated. Intelligent. His solicitor sent him a bill for over £20,000 for <em>one month</em> of representation. He came to John. Over the four years that followed, John's total fee was £9,000 — <mark class="h">less than half of what one month with a solicitor had cost him</mark>. And that was <em>before</em> Court Compass existed.</p>
 
-  <p style="text-align:center; font-size:26px; font-weight:800; margin:30px 0">What that doctor paid £9,000 for over four years<br/>is now inside Court Compass for <span class="red">£197</span>. <span class="arrow">↘</span></p>
+  <p style="text-align:center; font-size:26px; font-weight:bold; margin:30px 0">What that doctor paid £9,000 for over four years<br/>is now inside Court Compass for <span class="red">£197</span>. <span class="arrow">↘</span></p>
 
   <p style="text-align:center; font-style:italic; color:var(--ink-soft)">That is not a typo.</p>
 
@@ -418,7 +378,7 @@
 
   <h2 class="lead">Two Questions You Should Ask<br/>Every Professional <em>Before</em> You Let<br/>Them Touch Your Case.</h2>
 
-  <ol style="font-size:24px; font-weight:800; padding-left:1.2em; margin:18px 0">
+  <ol style="font-size:22px; font-weight:bold; padding-left:1.2em; margin:18px 0">
     <li style="margin-bottom:10px"><span class="u">Have you done this before? And how often?</span></li>
     <li><span class="u">Has anyone been harmed by you doing this?</span></li>
   </ol>
@@ -452,28 +412,28 @@
       <div class="amt">£197</div>
       <div class="sub">ONE PAYMENT</div>
       <p class="d">The Family Court Survival System. All nine tools. Lifetime access. Annual renewal at £97 from year two.</p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px; box-shadow:0 3px 0 #6e0e12">GET INSTANT ACCESS</a>
+      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">GET INSTANT ACCESS</a>
     </div>
     <div class="price featured">
       <div class="name">Tools + One Hour</div>
       <div class="amt">£294</div>
       <div class="sub">ONE PAYMENT</div>
       <p class="d">The Survival System <em>plus</em> one hour Tactics Talk with John. Tools and personal guidance together.</p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px; box-shadow:0 3px 0 #6e0e12">GET STARTED WITH JOHN</a>
+      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">GET STARTED WITH JOHN</a>
     </div>
     <div class="price">
       <div class="name">Three Hours</div>
       <div class="amt">£497</div>
       <div class="sub">ONE PAYMENT</div>
       <p class="d">Three hours of John's time at £165/hr. Calls, document review, court prep or negotiation strategy. No expiry.</p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px; box-shadow:0 3px 0 #6e0e12">BOOK THREE HOURS</a>
+      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">BOOK THREE HOURS</a>
     </div>
     <div class="price">
       <div class="name">Ten Hours</div>
       <div class="amt">£1,270</div>
       <div class="sub">ONE PAYMENT</div>
       <p class="d">Ten hours at £127/hr. Sustained strategic support through the most critical phase. <em>Less than the government floor rate for an unqualified trainee.</em></p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px; box-shadow:0 3px 0 #6e0e12">BOOK TEN HOURS</a>
+      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">BOOK TEN HOURS</a>
     </div>
   </div>
 
@@ -482,12 +442,12 @@
     <div class="price">
       <div class="amt">£197 / mo</div>
       <p class="d">1 hour of John's time per month. Cancel any time.</p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px; box-shadow:0 3px 0 #6e0e12">START RETAINER</a>
+      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">START RETAINER</a>
     </div>
     <div class="price">
       <div class="amt">£297 / mo</div>
       <p class="d">2 hours of John's time per month. Cancel any time.</p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px; box-shadow:0 3px 0 #6e0e12">START RETAINER</a>
+      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">START RETAINER</a>
     </div>
   </div>
 
@@ -495,7 +455,7 @@
     <h4 style="color:var(--red)">⚠ Emergency Court Attendance</h4>
     <p>There are moments when a call is not enough. John travels to your court, wherever it is in England, Wales or Northern Ireland, and sits beside you for the full day.</p>
     <p><strong>Northern Ireland — £997</strong> (any notice) · <strong>NI calls only, &lt;3 days — £497</strong> · <strong>England/Wales, 7+ days notice — £1,297</strong> · <strong>England/Wales, 3–6 days notice — £1,497</strong></p>
-    <p style="color:var(--red); font-weight:700">There is no cancellation on England or Wales packages. Travel, accommodation and logistics are booked immediately after payment clears. Less than 3 days notice in England or Wales is not available.</p>
+    <p style="color:var(--red); font-weight:bold">There is no cancellation on England or Wales packages. Travel, accommodation and logistics are booked immediately after payment clears. Less than 3 days notice in England or Wales is not available.</p>
   </div>
 
   <div class="divider">· · ·</div>
@@ -523,7 +483,7 @@
 
   <div class="signoff">
     <p>Yours, in your corner,</p>
-    <div class="sig">John Junk</div>
+    <div class="sig"><em>John Junk</em></div>
     <div class="sigline">John Junk · Court Compass · Family Court Intelligence</div>
   </div>
 
