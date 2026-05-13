@@ -1,506 +1,499 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Court Compass — Family Court Intelligence</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Court Compass -- Family Court Intelligence For Separated Parents</title>
+<meta name="description" content="Nine AI-powered tools built on thirty years of family court experience. Know where you stand. Know what the court thinks about your children. Go in with your eyes open.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,300..900;1,8..144,300..900&family=Poppins:wght@400;500;600;700;800;900&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <style>
-  :root{
-    --bg:#ffffff;
-    --ink:#1a1a1a;
-    --ink-soft:#666666;
-    --red:#cc0000;
-    --cta:#cc0000;
-    --cta-hover:#aa0000;
-    --maxw:680px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:Georgia,"Times New Roman",Times,serif;
-    font-size:19px;
-    line-height:1.75;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-  .wide{max-width:900px;margin:0 auto;padding:0 24px}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--red:#960A0E;
+--red2:#6e0709;
+--blush:#EACECF;
+--cream:#FFFEE9;
+--white:#ffffff;
+--ink:#040404;
+--ink2:#2a2a2a;
+--ink3:#666666;
+--green:#00B33A;
+--green2:#009930;
+--gold:#c9943a;
+--navy:#0d1a2e;
+--poppins:'Poppins',sans-serif;
+--serif:'Roboto Serif',Georgia,serif;
+--script:'Dancing Script',cursive;
+}
+body{background:var(--blush);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.8;margin:0}
+.page-wrap{max-width:820px;margin:0 auto;background:var(--white);box-shadow:0 0 40px rgba(0,0,0,.18)}
 
-  /* Top banner */
-  .topbar{
-    background:#1a1a1a; color:#fff;
-    text-align:center; padding:10px 16px;
-    font-family:Georgia,serif; font-size:13px;
-    letter-spacing:.05em;
-  }
+h2{font-family:var(--serif);font-size:clamp(22px,3.8vw,36px);font-weight:900;text-transform:uppercase;line-height:1.1;color:var(--ink);margin:0 0 20px}
+h2 em{color:var(--red);font-style:normal}
+h3{font-family:var(--serif);font-size:16px;font-weight:800;text-transform:uppercase;color:var(--ink);margin:0 0 8px;letter-spacing:.04em}
+p{margin-bottom:18px;font-family:var(--serif);font-size:17px;line-height:1.8;color:var(--ink2)}
+p:last-child{margin-bottom:0}
 
-  /* Masthead */
-  .masthead{
-    text-align:center; padding:30px 22px 20px;
-    border-bottom:2px solid #1a1a1a;
-  }
-  .masthead .kicker{
-    font-size:14px; color:var(--ink-soft); margin-bottom:8px;
-  }
-  .masthead h1.brand{
-    font-family:Georgia,serif; font-weight:bold;
-    font-size:36px; letter-spacing:.1em; margin:0 0 4px;
-    text-transform:uppercase;
-  }
-  .masthead .dateline{
-    font-size:13px; color:var(--ink-soft);
-  }
-  .double-rule{border-top:3px double #1a1a1a; margin:14px auto 0; max-width:900px}
+.sec{padding:52px 60px}
+.sec-white{background:var(--white)}
+.sec-cream{background:var(--cream)}
+.sec-blush{background:var(--blush)}
+.sec-ink{background:var(--ink)}
+.sec-ink p{color:rgba(255,255,255,.82)}
+.sec-ink h2{color:#fff}
+.sec-ink h2 em{color:#f5c842}
+.sec-ink h3{color:rgba(255,255,255,.9)}
+.sec-navy{background:var(--navy)}
+.sec-navy p{color:rgba(255,255,255,.82)}
+.sec-navy h2{color:#fff}
+.sec-navy h2 em{color:#f5c842}
+.sec-navy h3{color:#fff}
 
-  /* Headlines */
-  h1.lead, h2.lead{
-    font-family:Georgia,serif; font-weight:bold;
-    font-size:36px; line-height:1.2;
-    text-align:center; margin:44px 0 10px;
-  }
-  h2.lead{font-size:30px}
-  h3.sub{
-    font-family:Georgia,serif; font-weight:bold;
-    font-size:24px; line-height:1.3; margin:36px 0 14px;
-  }
-  .deck{
-    font-style:italic; font-size:20px;
-    text-align:center; color:var(--ink-soft);
-    margin:0 auto 28px; max-width:600px;
-  }
+.top-bar{background:var(--red);color:#fff;text-align:center;padding:10px 20px;font-family:var(--poppins);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.jump-bar{background:var(--green);padding:18px 40px;text-align:center}
+.jump-bar a{font-family:var(--poppins);font-size:18px;font-weight:700;color:#fff;text-decoration:underline;cursor:pointer}
+.jump-bar a:hover{color:#e8ffe8}
 
-  /* Body prose */
-  p{margin:0 0 20px}
-  mark.h{background:transparent; padding:0}
-  mark.h2{background:transparent; padding:0}
-  .red{color:var(--red); font-weight:bold}
-  .u{text-decoration:underline}
-  strong{font-weight:bold}
+.eyebrow{font-family:var(--poppins);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px}
+.red-rule{border:none;border-top:3px solid var(--red);width:80px;margin:24px 0}
+.red-rule-c{border:none;border-top:3px solid var(--red);width:80px;margin:24px auto}
 
-  /* Section spacing */
-  section{padding:28px 0}
-  .divider{
-    text-align:center; margin:36px 0; color:var(--ink-soft);
-    letter-spacing:.4em; font-size:14px;
-  }
-  hr.thin{border:0;border-top:1px solid #ddd; margin:36px 0}
+.hero{background:var(--ink);padding:52px 60px 60px;border-bottom:4px solid var(--red)}
+.hero-title{font-family:var(--serif);font-size:clamp(28px,5.2vw,56px);font-weight:900;line-height:1.05;color:#fff;margin-bottom:20px;text-transform:uppercase}
+.hero-title em{color:var(--gold);font-style:normal}
+.hero-deck{font-family:var(--serif);font-size:18px;color:rgba(255,255,255,.82);line-height:1.75;margin-bottom:32px;max-width:620px}
 
-  /* CTA */
-  .cta-wrap{text-align:center; margin:30px 0 12px}
-  .cta{
-    display:inline-block;
-    background:var(--cta); color:#fff;
-    font-family:Georgia,serif; font-weight:bold;
-    font-size:17px; padding:16px 24px; line-height:1.2;
-    text-decoration:none; border-radius:4px;
-    max-width:560px;
-  }
-  .cta:hover{background:var(--cta-hover)}
-  .cta small{display:block; font-weight:normal; font-size:12px; margin-top:4px; opacity:.9}
-  .cta-alt{
-    display:inline-block; margin-top:14px;
-    color:var(--ink); text-decoration:underline; font-size:14px;
-  }
+.btn-red{display:inline-block;border-radius:6px;background:var(--red);color:#fff;font-family:var(--poppins);font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:18px 28px;text-decoration:none;cursor:pointer;border:none}
+.btn-red:hover{background:var(--red2)}
+.btn-green{display:inline-block;border-radius:6px;background:var(--green);color:#fff;font-family:var(--poppins);font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:18px 28px;text-decoration:none;cursor:pointer;border:none}
+.btn-green:hover{background:var(--green2)}
+.btn-outline{display:inline-block;border-radius:6px;background:transparent;color:#fff;font-family:var(--poppins);font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:17px 28px;text-decoration:none;cursor:pointer;border:2px solid rgba(255,255,255,.4)}
+.btn-outline:hover{border-color:#fff}
+.btn-gold{display:inline-block;border-radius:6px;background:var(--gold);color:var(--ink);font-family:var(--poppins);font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:18px 28px;text-decoration:none;cursor:pointer;border:none}
+.btn-block{display:block;width:100%;text-align:center}
+.btn-pair{display:flex;flex-wrap:wrap;gap:12px}
 
-  /* Boxed callouts */
-  .box{
-    border:2px solid var(--ink); background:#f9f9f9;
-    padding:20px 22px; margin:24px 0;
-  }
-  .box.red{border-color:var(--red); background:#fff5f5}
-  .box h4{
-    font-family:Georgia,serif; font-weight:bold;
-    font-size:20px; margin:0 0 10px; text-transform:uppercase;
-  }
-  .pullquote{
-    border-left:5px solid var(--ink);
-    padding:4px 0 4px 18px; margin:28px 0;
-    font-style:italic; font-size:22px; line-height:1.4;
-  }
-  .pullquote cite{
-    display:block; margin-top:8px; font-style:normal;
-    font-size:13px; letter-spacing:.1em;
-    text-transform:uppercase; color:var(--ink-soft);
-  }
+.situations{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:32px}
+.sit{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:28px 22px}
+.sit-num{font-family:var(--poppins);font-size:36px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:10px}
+.sit h3{color:#fff;font-size:15px;margin-bottom:8px}
+.sit p{color:rgba(255,255,255,.72);font-size:15px;margin:0}
 
-  /* Testimonial card */
-  .tcard{
-    display:grid; grid-template-columns:88px 1fr; gap:16px;
-    align-items:start; padding:20px; background:#f9f9f9;
-    border:1px solid #ddd; margin:22px 0;
-  }
-  .tcard .av{
-    width:88px;height:88px;border-radius:50%;
-    background:#ddd;
-    display:flex; align-items:center; justify-content:center;
-    font-weight:bold; color:#888; font-size:26px;
-  }
-  .tcard p{margin:0 0 6px; font-size:17px; line-height:1.55; font-style:italic}
-  .tcard .who{
-    font-size:12px; letter-spacing:.1em;
-    text-transform:uppercase; color:var(--ink-soft);
-  }
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:36px 0}
+.stat-n{font-family:var(--poppins);font-size:clamp(44px,6.5vw,68px);font-weight:900;color:var(--red);line-height:1;margin-bottom:8px}
+.stat-l{font-family:var(--serif);font-size:14px;color:var(--ink2);line-height:1.6}
 
-  /* Stat row */
-  .stats{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
-    margin:18px 0 8px;
-  }
-  .stat{text-align:center}
-  .stat .n{
-    font-family:Georgia,serif; font-weight:bold;
-    font-size:64px; line-height:1; color:var(--red);
-  }
-  .stat p{font-size:14px; color:var(--ink-soft)}
-  @media(max-width:600px){
-    .stats{grid-template-columns:1fr}
-    .stat .n{font-size:48px}
-    h1.lead,h2.lead{font-size:28px}
-  }
+.analogs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:32px 0}
+.analog{border-top:3px solid var(--gold);padding-top:18px}
+.analog h3{color:#fff;font-family:var(--serif);font-size:14px;font-weight:700;text-transform:none;letter-spacing:0;margin-bottom:8px}
+.analog p{color:rgba(255,255,255,.7);font-size:14px;line-height:1.65;margin:0}
 
-  /* Checklist */
-  ul.check{list-style:none; padding:0; margin:14px 0 22px}
-  ul.check li{
-    padding:8px 0 8px 28px; position:relative; font-size:18px;
-    border-bottom:1px solid #eee;
-  }
-  ul.check li:before{
-    content:"✔"; position:absolute; left:0; top:8px;
-    color:var(--red);
-  }
+.gold-q{font-family:var(--serif);font-size:clamp(17px,2.6vw,24px);font-weight:800;color:var(--gold);line-height:1.45;text-align:center;max-width:580px;margin:0 auto}
 
-  /* Tools grid */
-  .tools{
-    display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
-    margin:18px 0;
-  }
-  .tools .t{
-    border:1px solid #ddd; padding:16px; background:#f9f9f9;
-  }
-  .tools .t .num{
-    font-weight:bold; color:var(--red); font-size:20px; margin-bottom:4px;
-  }
-  .tools .t h5{
-    font-weight:bold; font-size:17px; margin:0 0 6px;
-  }
-  .tools .t p{font-size:14px; line-height:1.5; color:var(--ink-soft); margin:0}
-  @media(max-width:600px){.tools{grid-template-columns:1fr}}
+.pq{border-left:5px solid var(--red);padding:18px 24px;margin:28px 0;background:var(--cream)}
+.pq p{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);margin:0;line-height:1.5;font-style:italic}
 
-  /* Pricing */
-  .price-grid{
-    display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:18px 0;
-  }
-  .price{
-    border:2px solid var(--ink); padding:20px; background:#f9f9f9;
-  }
-  .price.featured{border-color:var(--red); background:#fff5f5; position:relative}
-  .price.featured:before{
-    content:"MOST CHOSEN"; position:absolute; top:-12px; left:14px;
-    background:var(--red); color:#fff;
-    font-size:11px; letter-spacing:.15em; padding:4px 8px;
-  }
-  .price .name{font-size:12px; text-transform:uppercase; letter-spacing:.1em;
-    color:var(--ink-soft); margin-bottom:6px}
-  .price .amt{font-weight:bold; font-size:40px; line-height:1}
-  .price .sub{font-size:12px; color:var(--ink-soft); margin:4px 0 12px}
-  .price p.d{font-size:14px; line-height:1.5; margin:0 0 14px}
-  @media(max-width:600px){.price-grid{grid-template-columns:1fr}}
+.auth{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;padding:32px 0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);margin:32px 0}
+.auth-av{width:88px;height:88px;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.auth-av span{font-family:var(--poppins);font-size:24px;font-weight:900;color:#fff}
+.auth-name{font-family:var(--poppins);font-size:22px;font-weight:900;text-transform:uppercase;color:var(--ink);margin-bottom:3px}
+.auth-role{font-family:var(--serif);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.creds{list-style:none;font-family:var(--serif);font-size:14px}
+.creds li{padding:6px 0;border-bottom:1px solid #eee;display:flex;gap:10px}
+.creds li:last-child{border-bottom:none}
+.creds li::before{content:"✦";color:var(--red);font-size:9px;flex-shrink:0;margin-top:4px}
 
-  /* Signature */
-  .signoff{margin:36px 0 10px}
-  .sig{font-size:42px; font-style:italic; line-height:1; color:var(--ink)}
-  .sigline{font-size:13px; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--ink-soft); margin-top:6px}
+.story-box{background:var(--navy);color:#fff;padding:36px;border-left:6px solid var(--gold);margin-top:28px}
+.story-box p{color:rgba(255,255,255,.88);font-size:18px;line-height:1.8;margin-bottom:16px}
+.story-punch{font-family:var(--poppins);font-size:clamp(20px,3.2vw,30px);font-weight:900;color:var(--gold);text-transform:uppercase;margin:0!important}
 
-  /* PS */
-  .ps{margin:12px 0; font-size:18px}
-  .ps strong{color:var(--red)}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+.tool{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);padding:20px 16px;transition:border-color .2s}
+.tool:hover{border-color:rgba(201,148,58,.55)}
+.tool-n{font-family:var(--poppins);font-size:26px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px}
+.tool-t{font-family:var(--poppins);font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.tool-d{font-family:var(--serif);font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin:0}
 
-  /* Footer */
-  footer{padding:26px 22px 50px; text-align:center; color:var(--ink-soft);
-    font-size:13px; border-top:1px solid #ddd; margin-top:40px}
-  footer .brand{font-weight:bold; letter-spacing:.15em; text-transform:uppercase;
-    color:var(--ink); margin-bottom:8px}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.pc{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.03);padding:26px 20px;display:flex;flex-direction:column}
+.pc.feat{border:2px solid var(--gold);background:rgba(201,148,58,.06)}
+.pc-label{font-family:var(--poppins);font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.pc-price{font-family:var(--poppins);font-size:clamp(34px,4.5vw,50px);font-weight:900;color:#fff;line-height:1;margin-bottom:5px}
+.pc-sub{font-family:var(--serif);font-size:12px;color:rgba(255,255,255,.45);margin-bottom:14px}
+.pc-desc{font-family:var(--serif);font-size:13px;color:rgba(255,255,255,.78);line-height:1.7;flex:1;margin-bottom:18px}
 
-  /* Arrow accent */
-  .arrow{display:inline-block; transform:rotate(-6deg); color:var(--red); font-size:24px; margin:0 4px}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:28px 0}
+.num-head{font-family:var(--poppins);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.big-n{font-family:var(--poppins);font-size:clamp(36px,5.5vw,56px);font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px}
 
-  /* References */
-  .refs{font-size:12px; color:var(--ink-soft); line-height:1.6}
+.emerg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:24px 0}
+.ei{border:1px solid rgba(255,255,255,.14);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.02)}
+.ei-l{font-family:var(--serif);font-size:14px;color:rgba(255,255,255,.85);font-weight:500}
+.ei-s{font-family:var(--serif);font-size:12px;color:rgba(255,255,255,.45);margin-top:3px}
+.ei-p{font-family:var(--poppins);font-size:24px;font-weight:900;color:var(--gold);white-space:nowrap}
+
+.stitched{background:var(--cream);border:3px dashed var(--red);padding:44px 38px;margin:0}
+.s-kick{font-family:var(--poppins);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);text-align:center;margin-bottom:10px}
+.s-title{font-family:var(--serif);font-size:clamp(20px,3.8vw,36px);font-weight:900;text-transform:uppercase;line-height:1.1;text-align:center;color:var(--ink);margin-bottom:8px}
+.s-sub{font-family:var(--serif);font-size:15px;color:var(--ink2);text-align:center;margin-bottom:28px;font-style:italic}
+.vl{list-style:none;margin:0 0 24px;border-top:2px solid var(--ink)}
+.vl li{display:flex;align-items:baseline;gap:8px;padding:10px 0;border-bottom:1px dotted #bbb;font-family:var(--serif);font-size:15px;color:var(--ink2)}
+.vl li .ck{color:var(--green);font-weight:900;font-size:15px;flex-shrink:0;font-family:var(--poppins)}
+.vl li .in{flex:1}
+.vl li .iv{font-family:var(--poppins);font-weight:700;font-size:12px;color:var(--ink3);white-space:nowrap;padding-left:8px}
+.vl li.fi .iv{color:var(--red);font-size:13px;font-weight:800}
+.vl li.tot{border-top:3px solid var(--ink);border-bottom:none;margin-top:4px;padding-top:14px}
+.vl li.tot .in{font-family:var(--poppins);font-weight:800;font-size:14px;color:var(--ink)}
+.vl li.tot .iv{font-family:var(--poppins);font-weight:900;font-size:17px;color:var(--ink)}
+.price-c{text-align:center;padding:24px 0 18px;border-top:2px solid #ccc;margin-top:4px}
+.pf{font-family:var(--poppins);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:5px}
+.ph{font-family:var(--poppins);font-size:clamp(48px,8vw,76px);font-weight:900;color:var(--red);line-height:1;letter-spacing:-.03em}
+.pn{font-family:var(--serif);font-size:14px;color:var(--ink2);margin:6px 0 3px}
+.pfr{font-family:var(--poppins);font-size:13px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:.04em}
+
+.guars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink);margin:28px 0}
+.gu{background:#fff;padding:22px 16px;border-right:2px solid var(--ink)}
+.gu:last-child{border-right:none}
+.gu-n{font-family:var(--poppins);font-size:40px;font-weight:900;color:var(--red);line-height:1;margin-bottom:6px}
+.gu-t{font-family:var(--poppins);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);margin-bottom:8px}
+.gu p{font-family:var(--serif);font-size:13px;color:var(--ink2);margin:0;line-height:1.6}
+
+.vet-badge{display:inline-block;border:1px solid rgba(255,255,255,.3);padding:5px 14px;font-family:var(--poppins);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:18px}
+
+.ps{border-top:2px solid var(--ink);padding:28px 0 0;margin:40px 0 0}
+.ps p{font-size:15px;line-height:1.8;margin-bottom:14px;color:var(--ink2)}
+.ps-l{font-family:var(--poppins);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-right:8px}
+
+.refs{background:rgba(0,0,0,.88);padding:14px 40px;text-align:center}
+.refs p{font-family:var(--serif);font-size:10px;color:rgba(255,255,255,.4);line-height:1.8;margin:0}
+.foot{background:var(--ink);padding:24px 60px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:center}
+.foot-b{font-family:var(--poppins);font-size:15px;font-weight:900;color:var(--gold);text-transform:uppercase;letter-spacing:.05em}
+.foot-l{display:flex;gap:18px;justify-content:center}
+.foot-l a{font-family:var(--serif);font-size:13px;color:rgba(255,255,255,.55);text-decoration:none}
+.foot-l a:hover{color:var(--gold)}
+.foot-d{font-family:var(--serif);font-size:11px;color:rgba(255,255,255,.38);text-align:right;line-height:1.7}
+
+.calendly-inline-widget{min-width:320px;height:700px}
+
+@media(max-width:600px){
+.sec,.hero{padding:36px 20px}
+.situations,.analogs,.stats,.tools,.price-grid,.nums,.emerg,.guars{grid-template-columns:1fr}
+.gu{border-right:none;border-bottom:2px solid var(--ink)}
+.gu:last-child{border-bottom:none}
+.auth{grid-template-columns:1fr}
+.foot{grid-template-columns:1fr;text-align:center}
+.foot-l{justify-content:center}
+.foot-d{text-align:center}
+.stitched{padding:28px 18px}
+.btn-pair{flex-direction:column}
+.refs{padding:14px 20px}
+}
 </style>
 </head>
 <body>
 
-<div class="topbar">Used by separated parents across England, Wales &amp; Northern Ireland</div>
+<div class="top-bar">Used by separated parents across England, Wales and Northern Ireland</div>
 
-<header class="masthead">
-  <div class="kicker">A Private Letter From John Junk</div>
-  <h1 class="brand">Court Compass</h1>
-  <div class="dateline">Family Court Intelligence &nbsp;·&nbsp; Special Offer Inside</div>
-  <div class="double-rule"></div>
-</header>
+<div class="page-wrap">
 
-<main class="wrap">
-
-  <h1 class="lead">The Family Court System<br/>Was <span class="red">Not</span> Built For You.<br/><em>Court Compass Was.</em></h1>
-  <p class="deck">Nine AI-powered tools, built on thirty years inside the room. Know where you stand. Know what the court actually thinks about your children. Go in with your eyes open.</p>
-
-  <div class="cta-wrap">
-    <a class="cta" href="#checkout">YES — Give Me The Family Court Survival System
-      <small>Instant Access · £197 · One Payment</small></a><br/>
-    <a class="cta-alt" href="#book">…or book a Tactics Talk with John →</a>
+<div class="hero">
+  <span class="eyebrow">Watch this before you speak to a solicitor.</span>
+  <div style="position:relative;overflow:hidden;aspect-ratio:1920/1080;width:100%;max-width:680px;margin-bottom:28px"><iframe src="https://share.synthesia.io/embeds/videos/cab2ec7f-41ed-4a94-93a5-0ccaeb3b543c" loading="lazy" title="Synthesia video player - Court Compass VSL" allowfullscreen allow="encrypted-media; fullscreen; microphone; screen-wake-lock;" style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;padding:0;margin:0;overflow:hidden;"></iframe></div>
+  <h1 class="hero-title">The Family Court System<br>Was Not Built For You.<br><em>Court Compass Was.</em></h1>
+  <p class="hero-deck">Nine AI-powered tools built on thirty years of family court experience. Know where you stand. Know what the court thinks about your children. Go in with your eyes open.</p>
+  <div class="btn-pair">
+    <a class="btn-gold" href="#checkout">Stop Going In Unprepared -- Book Now</a>
+    <a class="btn-outline" href="#book">Book a Session With John -- £297</a>
   </div>
+</div>
 
-  <hr class="thin"/>
+<div class="jump-bar">
+  <a href="#book">Already convinced? Skip straight to booking. &#8595;</a>
+</div>
 
-  <p class="lead-p">Dear friend, if you are reading this, you are almost certainly in one of four places. You are <mark class="h">just starting to think about separation</mark> and want to understand what you are walking into before any lawyer gets involved. Or you are <strong>already in proceedings</strong> and you need to understand what is happening, what your documents mean, and what the court actually cares about. Or — and this is the one nobody talks about — <mark class="h2">the money has run out</mark>. You had a solicitor, you had a barrister, the funds ran out mid-case, and now you are sitting at a kitchen table at half past eleven at night reading a court bundle you do not understand. Or you are going it alone from day one, because you never had the money for representation in the first place.</p>
+<div class="sec sec-cream">
+  <span class="eyebrow" style="color:var(--red)">The person behind Court Compass.</span>
+  <h2>Meet <em>John Junk LL.M.</em></h2>
+  <div class="red-rule"></div>
+  <p>The client who slept for the first time in months after one conversation is a real person. The doctor who paid over twenty thousand pounds for one month of solicitor representation and then found a different path is a real person. John is the reason both of those things happened.</p>
+  <p>John Junk holds an LL.M in Access to Justice with Distinction from Ulster University. He is the recipient of the 2019 Department of Justice Northern Ireland Access to Justice Scholar Award. He has spent thirty years as a McKenzie Friend in family courts across England, Wales and Northern Ireland. He has been granted leave to address the Court of Appeal in both jurisdictions. He has appeared as a panelist on BBC current affairs programmes discussing family law.</p>
+  <p>Court Compass is nine AI-powered tools built on those thirty years of direct family court experience. Not legal advice. Legal intelligence. Available only when you book a session with John directly.</p>
+</div>
 
-  <p>Wherever you are: <span class="u">Court Compass was built for you.</span></p>
+<div class="sec sec-navy">
+  <h2 style="text-align:center;max-width:540px;margin:0 auto 8px">Wherever You Are Right Now,<br><em>Court Compass Was Built For You.</em></h2>
+  <div class="red-rule-c"></div>
+  <div class="situations">
+    <div class="sit"><div class="sit-num">01</div><h3>Just Starting To Think About Separation</h3><p>You want to understand what you are walking into before any lawyers get involved. Court Compass gives you that intelligence before you spend a penny.</p></div>
+    <div class="sit"><div class="sit-num">02</div><h3>Already In Proceedings</h3><p>You need to understand what is happening, what your documents mean, and what the court actually cares about. Court Compass gives you clarity right now.</p></div>
+    <div class="sit"><div class="sit-num">03</div><h3>The Money Has Run Out</h3><p>You had a solicitor and the funds ran out mid-case. You are not starting from scratch. You are continuing with better support than you had before.</p></div>
+    <div class="sit"><div class="sit-num">04</div><h3>Going It Alone From The Start</h3><p>You never had the money for representation. Court Compass is the resource that should have existed the day this started.</p></div>
+  </div>
+</div>
 
-  <div class="divider">· · ·</div>
-
-  <h2 class="lead">The Numbers Tell Their Own Story.</h2>
-
+<div class="sec sec-white" style="text-align:center">
+  <h2>The Numbers Tell<br><em>Their Own Story.</em></h2>
+  <div class="red-rule-c"></div>
   <div class="stats">
-    <div class="stat"><div class="n">80%</div><p>of private family law cases now have at least one unrepresented party<br/><em>(Ministry of Justice)</em></p></div>
-    <div class="stat"><div class="n">39%</div><p>of cases have <em>neither</em> party represented — up from 13% in 2013<br/><em>(Ministry of Justice)</em></p></div>
-    <div class="stat"><div class="n">96%</div><p>increase in cases with neither party represented, 2016 to 2023<br/><em>(Law Society of England &amp; Wales)</em></p></div>
+    <div><div class="stat-n">80%</div><p class="stat-l">of private family law cases now have at least one unrepresented party (Ministry of Justice)</p></div>
+    <div><div class="stat-n">39%</div><p class="stat-l">of cases have neither party represented, up from 13% in 2013 (Ministry of Justice)</p></div>
+    <div><div class="stat-n">96%</div><p class="stat-l">increase in cases with neither party represented between 2016 and 2023 (Law Society of England and Wales)</p></div>
   </div>
+  <p style="max-width:580px;margin:0 auto;font-size:17px">These are not people who chose to go it alone. Approximately 75 to 80% of them are there because they cannot afford legal fees. The system was built for lawyers. Court Compass was built for everyone else.</p>
+</div>
 
-  <p>These are not people who <em>chose</em> to go it alone. Roughly <strong>75 to 80%</strong> of them are there because they cannot afford the legal fees. The system was built for lawyers. <mark class="h">Court Compass was built for everyone else.</mark></p>
-
-  <div class="divider">· · ·</div>
-
-  <h2 class="lead">Solicitors Are Not Fans Of People<br/>Who Represent Themselves.</h2>
-
-  <p>Think about it like this. <strong>Major house builders</strong> are not fans of self-build. The system works better when you buy from them — an individual who builds their own home is exercising a legal right the industry did not design for. <strong>Estate agents</strong> are not fans of private sales. You can sell your own home. The industry works better when you need them to do it for you. <strong>Funeral directors</strong> are not fans of families who arrange their own funerals. Entirely legal. The model just works better when grief makes you hand everything over.</p>
-
-  <div class="pullquote">
-    Family law solicitors are not fans of people who represent themselves. Not because self-representation does not work. <span class="red">Because it threatens their income.</span>
+<div class="sec sec-ink">
+  <h2 style="text-align:center;max-width:540px;margin:0 auto 8px">Solicitors Are Not Fans Of People<br>Who Represent Themselves.</h2>
+  <div class="red-rule-c"></div>
+  <div class="analogs">
+    <div class="analog"><h3>Major house builders are not fans of self-build.</h3><p>The system works better when you buy from them. An individual who builds their own home is exercising a legal right the industry did not design for.</p></div>
+    <div class="analog"><h3>Estate agents are not fans of private sales.</h3><p>You can sell your own home. The industry works better when you need them to do it for you.</p></div>
+    <div class="analog"><h3>Funeral directors are not fans of families who arrange their own funerals.</h3><p>Entirely legal. The model works better when grief makes you hand everything over.</p></div>
   </div>
+  <p class="gold-q">Family law solicitors are not fans of people who represent themselves. Not because self-representation does not work. Because it threatens their income.</p>
+</div>
 
-  <div class="cta-wrap">
-    <a class="cta" href="#checkout">RUSH ME COURT COMPASS — £197
-      <small>Lifetime access · Nine tools · One payment</small></a>
-  </div>
-
-  <hr class="thin"/>
-
-  <h2 class="lead">Thirty Years Inside The Room.</h2>
-
-  <div class="tcard">
-    <div class="av">JJ</div>
+<div class="sec sec-white">
+  <h2>Thirty Years Inside<br><em>The Room.</em></h2>
+  <div class="red-rule"></div>
+  <div class="auth">
+    <div class="auth-av"><span>JJ</span></div>
     <div>
-      <p>"A barrister once objected to John acting as a McKenzie Friend on the grounds that John was no ordinary man. He was right. And he meant it as a reason to keep John out of the room. Because when John is in the room, the other side's chances go down."</p>
-      <div class="who">— On the record, Court of Appeal hearing</div>
+      <p class="auth-name">John Junk LL.M</p>
+      <p class="auth-role">McKenzie Friend &bull; 30 Years &bull; LL.M Access to Justice &bull; Access to Justice Activist</p>
+      <ul class="creds">
+        <li>As a first year student, John beat hundreds of applicants from across Northern Ireland's universities in open merit competition to win an internship at an Ivy League law school, working alongside attorneys at a child protective services agency in the United States</li>
+        <li>LL.M in Access to Justice with Distinction, Ulster University</li>
+        <li>2019 Department of Justice Northern Ireland Access to Justice Scholar Award</li>
+        <li>Thirty years as a McKenzie Friend in family court across England, Wales and Northern Ireland</li>
+        <li>Granted leave to address the Court of Appeal in both England and Wales and in Northern Ireland</li>
+        <li>Court Compass covers England, Wales and Northern Ireland. It does not cover Scotland.</li>
+      </ul>
     </div>
   </div>
-
-  <ul class="check">
-    <li>Beat hundreds of applicants from across Northern Ireland's universities in open merit competition to win an internship at an <strong>Ivy League law school</strong>, working alongside attorneys at a US child protective services agency — as a first-year student.</li>
-    <li><strong>LL.M in Access to Justice with Distinction</strong>, Ulster University.</li>
-    <li><strong>2019 Department of Justice Northern Ireland Access to Justice Scholar Award.</strong></li>
-    <li>Thirty years as a McKenzie Friend in family court across England, Wales and Northern Ireland.</li>
-    <li><span class="u">Granted leave to address the Court of Appeal in both England and Wales and in Northern Ireland.</span></li>
-    <li><em>Court Compass covers England, Wales and Northern Ireland. It does not cover Scotland.</em></li>
-  </ul>
-
-  <div class="divider">· · ·</div>
-
-  <h2 class="lead">"His Solicitor Sent Him A Bill For<br/>Over <span class="red">£20,000</span>. For <em>One Month</em>."</h2>
-
-  <p>John worked with a doctor. A professional man. Educated. Intelligent. His solicitor sent him a bill for over £20,000 for <em>one month</em> of representation. He came to John. Over the four years that followed, John's total fee was £9,000 — <mark class="h">less than half of what one month with a solicitor had cost him</mark>. And that was <em>before</em> Court Compass existed.</p>
-
-  <p style="text-align:center; font-size:26px; font-weight:bold; margin:30px 0">What that doctor paid £9,000 for over four years<br/>is now inside Court Compass for <span class="red">£197</span>. <span class="arrow">↘</span></p>
-
-  <p style="text-align:center; font-style:italic; color:var(--ink-soft)">That is not a typo.</p>
-
-  <div class="cta-wrap">
-    <a class="cta" href="#checkout">YES — I WANT INSTANT ACCESS FOR £197
-      <small>Nine tools · Lifetime access · 30-day guarantee</small></a>
+  <div class="pq">
+    <p>"A barrister once objected to John acting as a McKenzie Friend on the grounds that John was no ordinary man. He was right. And he meant it as a reason to keep John out of the room. Because when John is in the room, the other side's chances go down."</p>
   </div>
+</div>
 
-  <hr class="thin"/>
+<div class="sec sec-cream">
+  <span class="eyebrow" style="color:var(--red)">A real client. Real numbers.</span>
+  <h2>"His solicitor sent him a bill for over £20,000.<br><em>For one month.</em>"</h2>
+  <div class="red-rule"></div>
+  <div class="story-box">
+    <p>John worked with a doctor. A professional man. Educated. Intelligent. His solicitor sent him a bill for over £20,000 for one month of representation. He came to John. Over the four years that followed, John's total fee was £9,000. Less than half of what one month with a solicitor had cost him. And that was before Court Compass existed.</p>
+    <p>What that doctor paid £9,000 for over four years is now inside Court Compass for £197.</p>
+    <p class="story-punch">That is not a typo.</p>
+  </div>
+</div>
 
-  <h2 class="lead">Here Is What The Court <em>Actually</em><br/>Thinks About Your Children.</h2>
+<div class="sec sec-ink" style="text-align:center">
+  <p style="font-family:var(--serif);font-size:clamp(17px,2.6vw,22px);font-style:italic;color:rgba(255,255,255,.9);line-height:1.65;max-width:580px;margin:0 auto 28px">"John has spent thirty years in the balcony. He knows what the performance looks like when it is going well and when it is falling apart. He knows what the person on the stage cannot see because they are too close to it."</p>
+  <p style="max-width:580px;margin:0 auto;text-align:left">The hearing is not where the case is won or lost. The case is won or lost in the days and weeks of preparation before anyone stands in front of a judge. In one negotiation John offered a minus number -- a figure that went the wrong way entirely -- and watched the other side realise in real time that they had completely misjudged their own case. The liability they believed was over £14,000 came down to £2,500. An 82% reduction. Not by compromising. By understanding the case well enough to shock them into seeing their own weakness.</p>
+</div>
 
-  <p>The court's starting point, <strong>always</strong>, is that it is in the best interests of the children to have a relationship with <strong>both</strong> parents. Not one parent. Both. <mark class="h2">What you think is best for your children and what the court thinks is best for your children are almost always different things.</mark></p>
+<div class="sec sec-navy">
+  <h2>You Do Not Need A Rottweiler.<br><em>You Need A Negotiator.</em></h2>
+  <div class="red-rule"></div>
+  <p>The proceedings drag on for months. Sometimes years. The costs spiral. The children watch their parents tear each other apart through lawyers' letters. And at the end of it those two people still have to co-parent. They still have to be in the same room at parents' evenings and school plays and birthday parties.</p>
+  <p>The Rottweiler did not protect you. The Rottweiler got paid. What you actually need is someone whose aim is to get these proceedings over as quickly as possible, with your sanity intact, and without destroying relationships that your children need to survive.</p>
+</div>
 
-  <p>The framework the court uses is the <span class="u">welfare checklist</span> — Children Act 1989 in England and Wales, Children (Northern Ireland) Order 1995 in Northern Ireland. Unless you know what is on it, what weight each factor carries, and how to present your case against it, <em>you are going in blind</em>.</p>
+<div class="sec sec-white">
+  <h2>Here Is What The Court Actually<br>Thinks About <em>Your Children.</em></h2>
+  <div class="red-rule"></div>
+  <p>The court's starting point, always, is that it is in the best interests of the children to have a relationship with both parents. Not one parent. Both. What you think is best for your children and what the court thinks is best for your children are almost always different things.</p>
+  <p>The framework the court uses is the welfare checklist -- found in the Children Act 1989 in England and Wales, and the Children (Northern Ireland) Order 1995 in Northern Ireland. Unless you know what is on it, what weight each factor carries, and how to present your case against it, you are going in blind. Court Compass includes a welfare checklist tool that shows you exactly how the court thinks about your child's situation. Not how you think about it. How the court thinks about it.</p>
+  <a class="btn-red" href="#checkout">Stop Going In Unprepared -- Book Now</a>
+</div>
 
-  <p>Court Compass includes a welfare checklist tool that shows you exactly how the court thinks about your child's situation. Not how you think about it. <strong>How the court thinks about it.</strong></p>
+<div class="sec sec-cream">
+  <h2>Two Questions You Should Ask Every Professional<br>Before You Let Them <em>Touch Your Case.</em></h2>
+  <div class="red-rule"></div>
+  <div style="margin:28px 0 24px">
+    <div style="display:flex;gap:18px;align-items:baseline;margin-bottom:18px">
+      <span style="font-family:var(--poppins);font-size:48px;font-weight:900;color:var(--red);line-height:1;flex-shrink:0">1.</span>
+      <span style="font-family:var(--serif);font-size:19px;font-weight:700;color:var(--ink)">Have you done this before? And how often?</span>
+    </div>
+    <div style="display:flex;gap:18px;align-items:baseline">
+      <span style="font-family:var(--poppins);font-size:48px;font-weight:900;color:var(--red);line-height:1;flex-shrink:0">2.</span>
+      <span style="font-family:var(--serif);font-size:19px;font-weight:700;color:var(--ink)">Has anyone been harmed by you doing this?</span>
+    </div>
+  </div>
+  <p>John asks these questions of every professional in a medical setting. A solicitor is about to make decisions that will determine how much time you spend with your children, how your finances are divided, and what your life looks like for the next decade. That is surgery on your family. Ask the questions. The ones who answer confidently and specifically are worth talking to. The ones who look at you like you have no right to ask are the ones to walk away from.</p>
+</div>
 
-  <div class="divider">· · ·</div>
+<div class="sec sec-ink">
+  <h2 style="text-align:center">Before You Pick Up The Phone<br>To A Solicitor, <em>Read This.</em></h2>
+  <div class="red-rule-c"></div>
+  <div class="nums">
+    <div>
+      <p class="num-head">The Numbers.</p>
+      <div class="big-n">£150</div>
+      <p style="color:rgba(255,255,255,.72);font-size:14px;margin-bottom:16px">What the median UK full-time worker earns per day (ONS Annual Survey of Hours and Earnings, October 2025)</p>
+      <div class="big-n">£142-£210</div>
+      <p style="color:rgba(255,255,255,.72);font-size:14px">What a trainee solicitor, someone not yet qualified, can charge per hour (HM Courts and Tribunals Service Solicitors Guideline Hourly Rates, January 2026)</p>
+      <p style="color:rgba(255,255,255,.88);margin-top:12px">One hour of a trainee's time costs more than a full day of yours. A qualified partner can charge £400 an hour or more.</p>
+    </div>
+    <div>
+      <p class="num-head">The Qualifications.</p>
+      <p>In England and Wales there is no legal requirement for a solicitor to hold any family law accreditation to take your private family case. In Northern Ireland the Children Order Panel applies only to public law care proceedings.</p>
+      <p>A fair few family law solicitors hold an undergraduate degree in something entirely unrelated to law, followed by a conversion course. No specialist panel membership. Your future and your children's future in their hands. At £300 an hour.</p>
+    </div>
+  </div>
+  <p class="gold-q" style="margin-top:8px">John holds an LL.M in Access to Justice with Distinction. Court Compass is £197. You do the maths.</p>
+</div>
 
-  <h2 class="lead">Nine Tools. Thirty Years Of Knowledge.<br/>Available The Moment You Need Them.</h2>
-  <p class="deck">Not legal advice. Intelligence.</p>
-
+<div class="sec sec-navy" id="tools">
+  <h2 style="text-align:center">Nine Tools. Thirty Years Of Knowledge.<br><em>Available The Moment You Need Them.</em></h2>
+  <p style="text-align:center;font-style:italic;color:rgba(255,255,255,.55);font-size:15px;margin-bottom:0">Not legal advice. Intelligence.</p>
+  <div class="red-rule-c"></div>
   <div class="tools">
-    <div class="t"><div class="num">01</div><h5>Legal Letter Translator</h5><p>Paste in any legal letter and get a plain-English explanation of what it actually means and what you should do next.</p></div>
-    <div class="t"><div class="num">02</div><h5>Welfare Report Analyser</h5><p>Understand what the children's welfare report is actually saying — CAFCASS, Cafcass Cymru, or GALA in Northern Ireland.</p></div>
-    <div class="t"><div class="num">03</div><h5>Financial Settlement Estimator</h5><p>Find out where you actually stand on financial settlement. Not what you hope. What is realistic.</p></div>
-    <div class="t"><div class="num">04</div><h5>McKenzie Friend Court Prep Tool</h5><p>Prepare for court the way John would prepare you. What to say, what not to say, what to ask.</p></div>
-    <div class="t"><div class="num">05</div><h5>Position Statement Builder</h5><p>Build a position statement that presents your case the way the court expects to see it.</p></div>
-    <div class="t"><div class="num">06</div><h5>Cross-Examination Preparation</h5><p>Prepare the questions you need to ask and the answers you need to give.</p></div>
-    <div class="t"><div class="num">07</div><h5>Appeal Checker</h5><p>Find out whether you have grounds to appeal a decision that went against you.</p></div>
-    <div class="t"><div class="num">08</div><h5>Weight-of-Evidence Reality Check</h5><p>Find out which of your arguments will carry weight in a family court and which ones will not.</p></div>
-    <div class="t"><div class="num">09</div><h5>Welfare Checklist Scorer</h5><p>Run your situation through the welfare checklist and find out how a judge is likely to view what is best for your children.</p></div>
+    <div class="tool"><div class="tool-n">01</div><p class="tool-t">Legal Letter Translator</p><p class="tool-d">Paste in any legal letter and get a plain English explanation of what it actually means and what you should do next.</p></div>
+    <div class="tool"><div class="tool-n">02</div><p class="tool-t">Welfare Report Analyser</p><p class="tool-d">Understand what the children's welfare report is actually saying, whether it comes from CAFCASS, Cafcass Cymru, or the Guardian Ad Litem Agency in Northern Ireland.</p></div>
+    <div class="tool"><div class="tool-n">03</div><p class="tool-t">Financial Settlement Estimator</p><p class="tool-d">Find out where you actually stand on financial settlement. Not what you hope. What is realistic.</p></div>
+    <div class="tool"><div class="tool-n">04</div><p class="tool-t">McKenzie Friend Court Prep Tool</p><p class="tool-d">Prepare for court the way John would prepare you. What to say, what not to say, and what questions to ask.</p></div>
+    <div class="tool"><div class="tool-n">05</div><p class="tool-t">Position Statement Builder</p><p class="tool-d">Build a position statement that presents your case the way the court expects to see it.</p></div>
+    <div class="tool"><div class="tool-n">06</div><p class="tool-t">Cross Examination Preparation Tool</p><p class="tool-d">Prepare the questions you need to ask and the answers you need to give.</p></div>
+    <div class="tool"><div class="tool-n">07</div><p class="tool-t">Appeal Checker</p><p class="tool-d">Find out whether you have grounds to appeal a decision that went against you.</p></div>
+    <div class="tool"><div class="tool-n">08</div><p class="tool-t">Weight of Evidence Reality Check</p><p class="tool-d">Find out which of your arguments will carry weight in a family court and which ones will not.</p></div>
+    <div class="tool"><div class="tool-n">09</div><p class="tool-t">Welfare Checklist Scorer</p><p class="tool-d">Run your situation through the welfare checklist and find out how a family court judge is likely to view what is best for your children.</p></div>
   </div>
+</div>
 
-  <div class="cta-wrap">
-    <a class="cta" href="#checkout">UNLOCK ALL NINE TOOLS — £197
-      <small>One payment · Lifetime access</small></a>
-  </div>
-
-  <hr class="thin"/>
-
-  <h2 class="lead">Before You Pick Up The Phone<br/>To A Solicitor, <span class="red">Read This.</span></h2>
-
-  <div class="box">
-    <h4>The Numbers.</h4>
-    <p><strong>£150</strong> — what the median UK full-time worker earns <em>per day</em> (ONS Annual Survey of Hours and Earnings, October 2025).</p>
-    <p><strong>£142–£210</strong> — what a <em>trainee</em> solicitor, someone not yet qualified, can charge <em>per hour</em> (HM Courts and Tribunals Service Solicitors Guideline Hourly Rates, January 2026).</p>
-    <p><mark class="h">One hour of a trainee's time costs more than a full day of yours.</mark> A qualified partner can charge £400 an hour or more.</p>
-  </div>
-
-  <div class="box red">
-    <h4>The Qualifications.</h4>
-    <p>In England and Wales there is <span class="red">no legal requirement</span> for a solicitor to hold any family law accreditation to take your private family case. In Northern Ireland the Children Order Panel applies <em>only</em> to public law care proceedings. For a private family dispute there is <strong>no mandatory specialist accreditation required</strong>.</p>
-    <p>A fair few family law solicitors hold an undergraduate degree in something <em>entirely unrelated</em> to law, followed by a conversion course. No specialist panel. Your future, and your children's future, in their hands. At £300 an hour.</p>
-  </div>
-
-  <div class="pullquote">
-    John holds an LL.M in Access to Justice with Distinction.<br/>Court Compass is £197. <span class="red">You do the maths.</span>
-  </div>
-
-  <div class="divider">· · ·</div>
-
-  <h2 class="lead">Two Questions You Should Ask<br/>Every Professional <em>Before</em> You Let<br/>Them Touch Your Case.</h2>
-
-  <ol style="font-size:22px; font-weight:bold; padding-left:1.2em; margin:18px 0">
-    <li style="margin-bottom:10px"><span class="u">Have you done this before? And how often?</span></li>
-    <li><span class="u">Has anyone been harmed by you doing this?</span></li>
-  </ol>
-
-  <p>John asks these questions of every professional in a medical setting. A solicitor is about to make decisions that will determine <em>how much time you spend with your children</em>, how your finances are divided, and what your life looks like for the next decade. <mark class="h">That is not a minor procedure. That is surgery on your family.</mark> Ask the questions. The ones who answer confidently and specifically are worth talking to. The ones who look at you like you have no right to ask are the ones to walk away from.</p>
-
-  <hr class="thin"/>
-
-  <h2 class="lead">You Do Not Need A Rottweiler.<br/>You Need A Negotiator.</h2>
-
-  <p>The proceedings drag on for months. Sometimes years. The costs spiral. The children watch their parents tear each other apart through lawyers' letters. And at the end of it those two people still have to co-parent. They still have to be in the same room at parents' evenings and school plays and birthday parties. <span class="red">The Rottweiler did not protect you. The Rottweiler got paid.</span></p>
-
-  <p>What you actually need is someone whose aim is to get these proceedings <em>over</em> as quickly as possible, with your sanity intact, and without destroying relationships that your children need to survive.</p>
-
-  <div class="pullquote">
-    "John has spent thirty years in the balcony. He knows what the performance looks like when it is going well and when it is falling apart. He knows what the person on the stage cannot see because they are too close to it."
-  </div>
-
-  <p>The hearing is not where the case is won or lost. The case is won or lost in the days and weeks of preparation and negotiation <em>before</em> anyone stands in front of a judge. In one negotiation John offered a <strong>minus number</strong> — a figure that went the wrong way entirely — and watched the other side realise in real time that they had completely misjudged the strength of their own case. The liability they believed was over £14,000 came down to £2,500. <mark class="h2">An 82% reduction.</mark> Not by compromising. By understanding the case well enough to shock them into seeing their own weakness.</p>
-
-  <div class="divider">· · ·</div>
-
-  <!-- PRICING -->
-  <a id="checkout"></a>
-  <h2 class="lead">Choose Where You Want To Start.</h2>
-  <p class="deck">Every option includes lifetime access to the nine tools. John's time is available at every level.</p>
-
+<div class="sec sec-ink" id="checkout">
+  <h2 style="text-align:center">Choose Where You Want<br>To <em>Start.</em></h2>
+  <p style="text-align:center;color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 28px;font-size:15px">Court Compass access -- seven days free, then £97/month -- is included with every booking. The more hours you book, the lower the hourly rate.</p>
   <div class="price-grid">
-    <div class="price">
-      <div class="name">The Tools</div>
-      <div class="amt">£197</div>
-      <div class="sub">ONE PAYMENT</div>
-      <p class="d">The Family Court Survival System. All nine tools. Lifetime access. Annual renewal at £97 from year two.</p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">GET INSTANT ACCESS</a>
+    <div class="pc feat">
+      <p class="pc-label">One Hour</p>
+      <div class="pc-price">£297</div>
+      <p class="pc-sub">one payment &bull; £297/hr</p>
+      <p class="pc-desc">One hour with John. Full case review, preparation plan, direct answers. Seven days of Court Compass access included free. After seven days, £97/month -- cancel anytime.</p>
+      <a class="btn-gold btn-block" href="#book">Book One Hour</a>
     </div>
-    <div class="price featured">
-      <div class="name">Tools + One Hour</div>
-      <div class="amt">£294</div>
-      <div class="sub">ONE PAYMENT</div>
-      <p class="d">The Survival System <em>plus</em> one hour Tactics Talk with John. Tools and personal guidance together.</p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">GET STARTED WITH JOHN</a>
+    <div class="pc">
+      <p class="pc-label">Five Hours</p>
+      <div class="pc-price">£1,297</div>
+      <p class="pc-sub">one payment &bull; £259/hr</p>
+      <p class="pc-desc">Five hours of John's time at £259 per hour. Use them across multiple calls, document review, hearing preparation or negotiation strategy. No expiry. Seven days of Court Compass access included free.</p>
+      <a class="btn-red btn-block" href="#book">Get Sustained Support -- Five Hours</a>
     </div>
-    <div class="price">
-      <div class="name">Three Hours</div>
-      <div class="amt">£497</div>
-      <div class="sub">ONE PAYMENT</div>
-      <p class="d">Three hours of John's time at £165/hr. Calls, document review, court prep or negotiation strategy. No expiry.</p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">BOOK THREE HOURS</a>
+    <div class="pc">
+      <p class="pc-label">Ten Hours</p>
+      <div class="pc-price">£1,997</div>
+      <p class="pc-sub">one payment &bull; £199/hr</p>
+      <p class="pc-desc">Ten hours of John's time at £199 per hour. Sustained strategic support through the most critical phase of your proceedings. Less than the government guideline floor rate for an unqualified trainee solicitor. Seven days of Court Compass access included free.</p>
+      <a class="btn-red btn-block" href="#book">Go All In -- Book Ten Hours</a>
     </div>
-    <div class="price">
-      <div class="name">Ten Hours</div>
-      <div class="amt">£1,270</div>
-      <div class="sub">ONE PAYMENT</div>
-      <p class="d">Ten hours at £127/hr. Sustained strategic support through the most critical phase. <em>Less than the government floor rate for an unqualified trainee.</em></p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">BOOK TEN HOURS</a>
-    </div>
-  </div>
-
-  <h3 class="sub" style="text-align:center">John In Your Corner Every Month.</h3>
-  <div class="price-grid">
-    <div class="price">
-      <div class="amt">£197 / mo</div>
-      <p class="d">1 hour of John's time per month. Cancel any time.</p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">START RETAINER</a>
-    </div>
-    <div class="price">
-      <div class="amt">£297 / mo</div>
-      <p class="d">2 hours of John's time per month. Cancel any time.</p>
-      <a class="cta" href="#" style="font-size:14px; padding:12px 18px">START RETAINER</a>
+    <div class="pc">
+      <p class="pc-label">Monthly Retainer</p>
+      <div class="pc-price">£197</div>
+      <p class="pc-sub">per month &bull; cancel anytime</p>
+      <p class="pc-desc">One hour of John's time every month. For cases requiring sustained ongoing support across multiple hearings over an extended period. Court Compass included free throughout.</p>
+      <a class="btn-red btn-block" href="#book">Keep John In My Corner</a>
     </div>
   </div>
+  <p style="text-align:center;margin-top:4px"><a href="#emergency" style="color:var(--gold);text-decoration:underline;font-family:var(--serif);font-size:14px">See emergency court attendance options &#8595;</a></p>
+</div>
 
-  <div class="box red">
-    <h4 style="color:var(--red)">⚠ Emergency Court Attendance</h4>
-    <p>There are moments when a call is not enough. John travels to your court, wherever it is in England, Wales or Northern Ireland, and sits beside you for the full day.</p>
-    <p><strong>Northern Ireland — £997</strong> (any notice) · <strong>NI calls only, &lt;3 days — £497</strong> · <strong>England/Wales, 7+ days notice — £1,297</strong> · <strong>England/Wales, 3–6 days notice — £1,497</strong></p>
-    <p style="color:var(--red); font-weight:bold">There is no cancellation on England or Wales packages. Travel, accommodation and logistics are booked immediately after payment clears. Less than 3 days notice in England or Wales is not available.</p>
+<div class="sec sec-ink" id="emergency">
+  <p style="font-family:var(--poppins);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#e05050;text-align:center;margin-bottom:12px">&#9651; Emergency Court Attendance</p>
+  <h2 style="text-align:center">When You Need John<br><em>In The Room.</em></h2>
+  <div class="red-rule-c"></div>
+  <p style="text-align:center;max-width:480px;margin:0 auto 24px">There are moments when a call is not enough. John travels to your court, wherever it is in England, Wales or Northern Ireland, and sits beside you for the full day.</p>
+  <div class="emerg">
+    <div class="ei"><div><div class="ei-l">Northern Ireland</div><div class="ei-s">any notice</div></div><div class="ei-p">£997</div></div>
+    <div class="ei"><div><div class="ei-l">NI calls only</div><div class="ei-s">under 3 days -- full day availability</div></div><div class="ei-p">£497</div></div>
+    <div class="ei"><div><div class="ei-l">England or Wales</div><div class="ei-s">7 or more days notice</div></div><div class="ei-p">£1,297</div></div>
+    <div class="ei"><div><div class="ei-l">England or Wales</div><div class="ei-s">3 to 6 days notice</div></div><div class="ei-p">£1,497</div></div>
   </div>
+  <p style="color:#e05050;text-align:center;font-family:var(--poppins);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-top:8px">No cancellation on England or Wales packages. Travel and logistics are booked immediately after payment clears. Under 3 days notice in England or Wales is not available.</p>
+</div>
 
-  <div class="divider">· · ·</div>
+<div class="sec sec-navy" style="text-align:center">
+  <span class="vet-badge">UK Armed Forces</span>
+  <h2>HM Armed Forces<br><em>Veterans.</em></h2>
+  <div class="red-rule-c"></div>
+  <p style="max-width:500px;margin:0 auto 24px">Court Compass offers a 25% discount across all products to veterans of HM Armed Forces. To claim your discount, upload your HM Armed Forces Veteran Card at checkout. Physical or digital cards accepted. Do not have your card yet? Apply free at gov.uk/veteran-card.</p>
+  <a class="btn-gold" href="#checkout">Claim My Veteran Discount Now</a>
+</div>
 
-  <!-- GUARANTEE -->
-  <div class="box" style="text-align:center; border-width:3px">
-    <h4>The Court Compass Guarantee.</h4>
-    <p style="font-size:20px">If after your first conversation with John you do not feel you are a good fit, you are free to cancel within <span class="u">30 days</span>. <strong>No questions asked.</strong></p>
+<div class="sec sec-cream" id="offer">
+  <div class="stitched">
+    <p class="s-kick">What you get when you book today</p>
+    <h2 class="s-title">Case Review Session With John Junk LL.M</h2>
+    <p class="s-sub">Thirty years. One session. Court Compass free for seven days, then £97/month.</p>
+    <ul class="vl">
+      <li><span class="ck">✓</span><span class="in">One-hour case review session -- thirty years as a McKenzie Friend, LL.M Access to Justice, England, Wales and Northern Ireland</span><span class="iv">From £297</span></li>
+      <li><span class="ck">✓</span><span class="in">Full review of your current position in proceedings and identification of preparation gaps</span><span class="iv">Included</span></li>
+      <li><span class="ck">✓</span><span class="in">Case-specific preparation plan for your next hearing</span><span class="iv">Included</span></li>
+      <li><span class="ck">✓</span><span class="in">Direct answers to every question you bring -- nothing deferred, nothing parked</span><span class="iv">Included</span></li>
+      <li><span class="ck">✓</span><span class="in">Framework for how to conduct yourself in your specific hearing</span><span class="iv">Included</span></li>
+      <li class="fi"><span class="ck">✓</span><span class="in"><strong>Court Compass -- all nine tools, full access, free for seven days when you book a session.</strong> After seven days, access continues at £97 per month. Cancel anytime.</span><span class="iv">FREE 7 days (then £97/mo)</span></li>
+      <li class="tot"><span class="ck"></span><span class="in">Combined value -- session plus first month Court Compass</span><span class="iv">£596+</span></li>
+    </ul>
+    <div class="price-c">
+      <p class="pf">Sessions start at</p>
+      <p class="ph">£297</p>
+      <p class="pn">Direct access to thirty years of McKenzie Friend practice</p>
+      <p class="pfr">Court Compass free for seven days, then £97/month</p>
+    </div>
+    <a class="btn-green btn-block" href="#book" style="font-size:19px;padding:22px 28px;margin-top:22px">Yes -- Get Me Prepared For Court &#8595;</a>
+    <p style="text-align:center;font-family:var(--serif);font-size:12px;color:var(--ink3);margin-top:10px;font-style:italic">Limited availability &bull; England, Wales and Northern Ireland only &bull; Family court matters</p>
   </div>
+</div>
 
-  <!-- VETERAN -->
-  <h3 class="sub" style="text-align:center">HM Armed Forces Veterans — 25% Off.</h3>
-  <p>Court Compass offers a 25% discount across all products to HM Armed Forces veterans. Upload your Veteran Card at checkout — physical or digital accepted. Don't have your card yet? Apply free at gov.uk/veteran-card.</p>
-
-  <hr class="thin"/>
-
-  <!-- SIGN OFF -->
-  <h2 class="lead">Let's Get You Through The Forest.</h2>
-  <p>You did not choose this situation. But you are in it. The question now is whether you go through it confused and frightened, or whether you go through it <mark class="h">knowing where you stand</mark>.</p>
-
-  <div class="cta-wrap">
-    <a class="cta" href="#checkout">YES — RUSH ME COURT COMPASS FOR £197
-      <small>Or book a Tactics Talk with John — £197</small></a>
+<div class="sec sec-white">
+  <h2 style="text-align:center">The Guarantees.</h2>
+  <div class="red-rule-c"></div>
+  <div class="guars">
+    <div class="gu"><p class="gu-n">01</p><p class="gu-t">Scope Guarantee</p><p>If your case is not within scope -- family court in England, Wales or Northern Ireland -- you'll be told before the session and you won't be charged. No grey areas.</p></div>
+    <div class="gu"><p class="gu-n">02</p><p class="gu-t">Clarity Guarantee</p><p>You leave with a clear preparation plan and direct answers to what you came with. If you don't, we continue until you do. Nothing gets deferred.</p></div>
+    <div class="gu"><p class="gu-n">03</p><p class="gu-t">30-Day Guarantee</p><p>If after your first conversation with John you do not feel you are a good fit, you are free to cancel within 30 days. No questions asked.</p></div>
   </div>
+</div>
 
-  <div class="signoff">
-    <p>Yours, in your corner,</p>
-    <div class="sig"><em>John Junk</em></div>
-    <div class="sigline">John Junk · Court Compass · Family Court Intelligence</div>
+<div class="sec sec-cream" id="book">
+  <h2 style="text-align:center">Book Your<br><em>Case Review Session.</em></h2>
+  <div class="red-rule-c"></div>
+  <p style="text-align:center;font-size:16px;color:var(--ink2);margin-bottom:28px">Select a time below. Court Compass access -- free for seven days, then £97/month -- is activated immediately after your booking is confirmed. Sessions from £297. England, Wales and Northern Ireland only. Family court matters.</p>
+  <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-CALENDLY-LINK" style="min-width:320px;height:700px"></div>
+  <p style="text-align:center;margin-top:14px;font-size:12px;color:var(--ink3);font-style:italic">If no times are showing, availability is currently full. Contact directly to be added to the waiting list. Sessions available by Zoom, phone or in person in Northern Ireland.</p>
+</div>
+
+<div class="sec sec-ink" style="text-align:center">
+  <h2 style="color:var(--gold);font-size:clamp(26px,4.8vw,50px)">Let's Get You Through The Forest.</h2>
+  <div class="red-rule-c"></div>
+  <p style="max-width:500px;margin:0 auto 32px;font-size:18px;color:rgba(255,255,255,.88)">You did not choose this situation. But you are in it. The question now is whether you go through it confused and frightened, or whether you go through it knowing where you stand.</p>
+  <div class="btn-pair" style="justify-content:center">
+    <a class="btn-gold" href="#checkout">Stop Going In Unprepared -- Book Now</a>
+    <a class="btn-outline" href="#book">Book a Session With John -- £297</a>
   </div>
+  <p style="color:rgba(255,255,255,.45);font-size:13px;margin-top:18px">Sessions available by Zoom, phone or in person in Northern Ireland.</p>
+</div>
 
-  <hr class="thin"/>
+<div class="sec sec-white">
+  <div class="ps">
+    <p><span class="ps-l">P.S.</span> Court Compass is free for the first seven days when you book a session with John. After that, access continues at £97 per month -- cancel anytime. It's structured this way because a client who has worked through the nine tools arrives at the session knowing the structure, the procedure, the terminology. The session is then used for the case-specific intelligence that only thirty years of direct practice can provide. It costs you less. That's the point.</p>
+    <p><span class="ps-l">P.P.S.</span> Sessions start at £297. A junior family law solicitor charges between £142 and £210 for an hour with someone who is not yet qualified. You decide what thirty years of direct practice in those specific courts is worth by comparison.</p>
+    <p><span class="ps-l">P.P.P.S.</span> Availability is limited. There is one practitioner here and a finite number of sessions in the week. If you have a hearing coming up, do not leave this until the week before.</p>
+  </div>
+</div>
 
-  <p class="ps"><strong>P.S.</strong> Remember the doctor. One month with a solicitor cost him over £20,000. Four years with John cost him £9,000. <mark class="h">Court Compass is £197.</mark> That is not a typo, and it will not be the price forever.</p>
-  <p class="ps"><strong>P.P.S.</strong> If you read nothing else on this page, read this: <span class="u">the court's view of what is best for your children is almost certainly not the same as yours.</span> The welfare checklist tool inside Court Compass shows you the gap before the court does. Going in without it is going in blind.</p>
-  <p class="ps"><strong>P.P.P.S.</strong> 30-day guarantee. If after your first conversation with John you do not feel you are a good fit, you cancel. No questions.</p>
+<div class="refs">
+  <p>References: Ministry of Justice Family Court Statistics Quarterly. Law Society of England and Wales. ONS Annual Survey of Hours and Earnings October 2025. HM Courts and Tribunals Service Solicitors Guideline Hourly Rates January 2026. Nuffield Foundation and Ulster University LiP Research Programme 2016 to 2023. Children Act 1989. Children (Northern Ireland) Order 1995. Practice Guidance McKenzie Friends Civil and Family Courts July 2010. Practice Note 3/2012 revised 7 June 2024 Lord Chief Justice of Northern Ireland.</p>
+</div>
 
-</main>
+<div class="foot">
+  <div class="foot-b">Court Compass</div>
+  <div class="foot-l"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a></div>
+  <p class="foot-d">Court Compass is not a legal advice service. The information and tools provided are for intelligence and educational purposes only. John Junk LL.M is not a practising solicitor or barrister. England, Wales and Northern Ireland only.</p>
+</div>
 
-<footer>
-  <div class="brand">Court Compass</div>
-  <p class="refs">References: Ministry of Justice Family Court Statistics Quarterly · Law Society of England &amp; Wales · ONS Annual Survey of Hours and Earnings, October 2025 · HM Courts &amp; Tribunals Service Solicitors Guideline Hourly Rates, January 2026 · Nuffield Foundation &amp; Ulster University LiP Research Programme 2016–2023 · Children Act 1989 · Children (Northern Ireland) Order 1995 · Practice Guidance: McKenzie Friends (Civil &amp; Family Courts) July 2010 · Practice Note 3/2012 revised 7 June 2024, Lord Chief Justice of Northern Ireland.</p>
-  <p style="margin-top:14px">Court Compass is not a legal advice service. The information and tools provided are for intelligence and educational purposes only. John Junk is not a practising solicitor or barrister.</p>
-  <p><a href="/privacy" style="color:var(--ink-soft)">Privacy</a> &nbsp;·&nbsp; <a href="/terms" style="color:var(--ink-soft)">Terms</a></p>
-</footer>
-
+</div>
 </body>
 </html>
