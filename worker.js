@@ -12,8 +12,11 @@ const SITEMAP = `<?xml version="1.0" encoding="UTF-8"?>
   </url>
 </urlset>`;
 
+const HTML_CACHE_KEY = 'https://courtcompass.co.uk/__html__';
+const CACHE_TTL = 300; // 5 minutes
+
 export default {
-  async fetch(request) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
     if (url.pathname === '/robots.txt') {
@@ -28,10 +31,23 @@ export default {
       });
     }
 
+    const cache = caches.default;
+    const cacheKey = new Request(HTML_CACHE_KEY);
+
+    let cached = await cache.match(cacheKey);
+    if (cached) {
+      return new Response(cached.body, {
+        headers: cached.headers,
+      });
+    }
+
     const r = await fetch('https://raw.githubusercontent.com/MrBooksCooks/courtcompass-site/main/index.html');
-    return new Response(await r.text(), {
+    const html = await r.text();
+
+    const response = new Response(html, {
       headers: {
         'Content-Type': 'text/html;charset=UTF-8',
+        'Cache-Control': `public, max-age=${CACHE_TTL}`,
         'X-Content-Type-Options': 'nosniff',
         'X-Frame-Options': 'SAMEORIGIN',
         'Referrer-Policy': 'strict-origin-when-cross-origin',
@@ -39,5 +55,8 @@ export default {
         'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
       }
     });
+
+    ctx.waitUntil(cache.put(cacheKey, response.clone()));
+    return response;
   }
 };
