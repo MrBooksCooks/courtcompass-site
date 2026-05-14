@@ -1,4 +1,4 @@
-name = "courtcompass"
+name = "courtcompass-site"
 account_id = "bfcd9c5b43146a11ddab0eb69ad5e6ab"
 main = "worker.js"
 compatibility_date = "2024-01-01"
