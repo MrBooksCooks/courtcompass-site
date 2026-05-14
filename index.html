@@ -126,8 +126,23 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>
+// Load Calendly only when booking section scrolls into view
+document.addEventListener('DOMContentLoaded', function() {
+  var target = document.getElementById('book');
+  if (!target) return;
+  var observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      var s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.head.appendChild(s);
+      observer.disconnect();
+    }
+  }, { rootMargin: '200px' });
+  observer.observe(target);
+});
+</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -352,7 +367,7 @@ strong{color:var(--black)}
 </head>
 <body>
 
-<div class="page-wrap">
+<main class="page-wrap">
 
 <div class="logo-bar">
   <div class="logo">Court <span>Compass</span></div>
@@ -368,6 +383,7 @@ strong{color:var(--black)}
   <div style="position:relative;width:100%;max-width:680px;margin:32px auto 32px;aspect-ratio:16/9">
     <video id="vsl" controls preload="none" style="width:100%;height:100%;display:block;background:#000" onplay="document.getElementById('vsl-cover').style.display='none'">
       <source src="https://cdn.shopify.com/videos/c/o/v/ed6f8f26060942aaa77ab1968136be4d.mp4" type="video/mp4">
+      <track kind="captions" src="" label="English" srclang="en" default>
     </video>
     <div id="vsl-cover" onclick="document.getElementById('vsl').play()" style="position:absolute;inset:0;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;padding:16px;text-align:center;overflow:hidden">
       <p style="font-size:clamp(10px,1.6vw,12px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px">7 minutes from now</p>
@@ -823,7 +839,7 @@ strong{color:var(--black)}
   <p class="foot-d">Court Compass is not a legal advice service. The information and tools provided are for intelligence and educational purposes only. John Junk LL.M is not a practising solicitor or barrister. England, Wales and Northern Ireland only.</p>
 </div>
 
-</div>
+</main>
 </body>
 </html>
 
