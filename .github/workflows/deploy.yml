@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare
+name: Deploy to Cloudflare Pages
 
 on:
   push:
@@ -13,3 +13,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: bfcd9c5b43146a11ddab0eb69ad5e6ab
+          command: pages deploy . --project-name=courtcompass-site --branch=main
