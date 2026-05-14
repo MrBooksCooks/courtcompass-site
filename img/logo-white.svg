@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="220" viewBox="0 0 980 220" role="img">
+<defs><style>.wm{font-family:Inter, 'DM Sans', Arial, Helvetica, sans-serif;font-weight:700;letter-spacing:-1.8px;dominant-baseline:central}.label{font-family:Inter, 'DM Sans', Arial, Helvetica, sans-serif;font-weight:600;letter-spacing:0}</style></defs>
+<rect width="100%" height="100%" fill="#222222"/>
+<g aria-label="four point compass rose">
+<polygon fill="#ffffff" points="110.000,36.080 129.430,113.960 110.000,110.660 90.570,113.960"/>
+<polygon fill="#ffffff" points="112.640,93.526 166.760,110.000 112.640,126.474 110.000,110.000"/>
+<polygon fill="#ffffff" points="92.682,109.340 110.000,110.000 127.318,109.340 110.000,166.760"/>
+<polygon fill="#ffffff" points="107.360,93.526 110.000,110.000 107.360,126.474 53.240,110.000"/>
+<polygon fill="#1a56db" points="110.000,106.040 113.960,110.000 110.000,113.960 106.040,110.000"/>
+</g>
+<text class="wm" x="174.000" y="112" font-size="62" text-anchor="start"><tspan fill="#ffffff">Court</tspan><tspan fill="#ffffff">Compass</tspan></text>
+</svg>
