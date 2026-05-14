@@ -189,6 +189,8 @@ strong{color:var(--black)}
 .jump-bar{background:var(--green);padding:14px 40px;text-align:center}
 .jump-bar a{font-size:clamp(14px,2vw,16px);font-weight:700;color:#fff;text-decoration:underline;cursor:pointer}
 .jump-bar a:hover{color:#e8ffe8}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 0 0 rgba(0,122,51,.5)}50%{box-shadow:0 0 0 12px rgba(0,122,51,0)}}
+.btn-pulse{animation:pulse-glow 2s ease-in-out infinite}
 
 .hero{background:var(--white);padding:40px 64px 52px;border-bottom:3px solid var(--black);text-align:center}
 .eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:14px}
@@ -383,9 +385,9 @@ strong{color:var(--black)}
     <p style="font-size:17px;margin-top:12px">The complexity is manufactured. Watch the video and find out what they don't want you to know.</p>
   </div>
   <div style="text-align:center;margin:0 0 32px">
-    <p style="font-size:20px;font-weight:900;color:var(--black);margin-bottom:6px">Just Get Me John Junk.</p>
+    <p style="font-size:20px;font-weight:900;color:var(--black);margin-bottom:6px">I Need Help Now.</p>
     <p style="font-size:15px;color:var(--mid);margin-bottom:18px">"I need someone who has been inside family courts for 30 years, who'll have my back from day one and help me through every step."</p>
-    <a class="btn-green" href="#book" style="font-size:19px;padding:20px 40px">Click Here For Immediate Help &darr;</a>
+    <a class="btn-green btn-pulse" href="#book" style="font-size:19px;padding:20px 40px">Click Here For Immediate Help</a>
     <p style="margin-top:12px;font-size:13px;color:var(--light)">Sessions from £297 &bull; Court Compass free for 7 days, then £97/month &bull; Cancel anytime</p>
   </div>
   <div style="position:relative;width:100%;max-width:680px;margin:32px auto 32px;aspect-ratio:16/9">
@@ -408,7 +410,7 @@ strong{color:var(--black)}
   <p style="margin-top:6px;font-size:14px;color:var(--light)"><a href="#checkout" style="color:var(--blue)">See what you get &rarr;</a></p>
 </div>
 
-<div class="jump-bar">
+<div class="jump-bar" style="display:none">
   <a href="#book">Already convinced? Skip straight to booking. &darr;</a>
 </div>
 
