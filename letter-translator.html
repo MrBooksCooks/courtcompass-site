@@ -168,7 +168,7 @@ textarea::placeholder{color:var(--light)}
   <textarea id="letter-input" maxlength="20000" placeholder="For example: I got a letter from the court saying I have to attend a hearing in three weeks and file a statement before then. It mentions something about a section 7 report being ordered. I don't know what a section 7 report is or what I'm supposed to do."></textarea>
   <div class="char-count" id="char-count">0 / 20000 characters</div>
 
-  <button class="btn-blue btn-pulse translate-btn" id="translate-btn" onclick="translate()">Translate My Letter</button>
+  <button class="btn-blue btn-pulse translate-btn" id="translate-btn" onclick="runTranslate()">Translate My Letter</button>
 
   <div class="error-box" id="error-box">
     <p id="error-text">Something went wrong. Please try again.</p>
@@ -250,7 +250,7 @@ textarea.addEventListener('input', function() {
   charCount.className = 'char-count' + (n > 1800 ? ' warn' : '');
 });
 
-function translate() {
+function runTranslate() {
   var input = textarea.value.trim();
   if (!input || input.length < 20) {
     showError('Please describe your letter in a bit more detail so we can explain it properly.');
