@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Letter Translator | Court Compass</title>
+<meta name="description" content="Describe your family court letter in plain words and get a plain-English explanation of what it means. Free tool from Court Compass.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--blue:#1a56db;
+--blue2:#1447c0;
+--red:#cc0000;
+--green:#007a33;
+--green2:#006029;
+--black:#000000;
+--dark:#222222;
+--mid:#555555;
+--light:#888888;
+--border:#dddddd;
+--bg:#f7f7f7;
+--white:#ffffff;
+--yellow:#fffbe6;
+--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+}
+body{background:var(--bg);color:var(--dark);font-family:var(--sans);font-size:17px;line-height:1.75;margin:0}
+.page-wrap{max-width:860px;margin:0 auto;background:var(--white);box-shadow:0 2px 24px rgba(0,0,0,.12)}
+
+h1{font-size:clamp(24px,3.8vw,42px);font-weight:900;line-height:1.1;color:var(--black);margin:0 0 18px;text-align:center}
+h2{font-size:clamp(20px,3vw,32px);font-weight:900;line-height:1.15;color:var(--black);margin:0 0 16px;text-align:center}
+h3{font-size:clamp(15px,2vw,18px);font-weight:700;color:var(--black);margin:0 0 8px}
+p{margin-bottom:16px;font-size:clamp(15px,2vw,17px);line-height:1.75;color:var(--dark)}
+p:last-child{margin-bottom:0}
+strong{color:var(--black)}
+
+.sec{padding:48px 64px}
+.sec-white{background:var(--white)}
+.sec-gray{background:var(--bg)}
+.sec-yellow{background:var(--yellow)}
+
+.top-bar{background:var(--blue);color:#fff;text-align:center;padding:9px 20px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+
+.logo-bar{background:var(--white);border-bottom:2px solid var(--black);padding:10px 64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:900;color:var(--black);text-transform:uppercase;letter-spacing:.04em}
+.logo span{color:var(--blue)}
+.logo-tagline{font-size:12px;color:var(--light);font-style:italic}
+
+.btn-blue{display:inline-block;border-radius:4px;background:var(--blue);color:#fff;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:18px 32px;text-decoration:none;cursor:pointer;border:none;line-height:1.2}
+.btn-blue:hover{background:var(--blue2)}
+.btn-green{display:inline-block;border-radius:4px;background:var(--green);color:#fff;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:18px 32px;text-decoration:none;cursor:pointer;border:none;line-height:1.2}
+.btn-green:hover{background:var(--green2)}
+.btn-block{display:block;width:100%;text-align:center}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 0 0 rgba(0,122,51,.5)}50%{box-shadow:0 0 0 12px rgba(0,122,51,0)}}
+.btn-pulse{animation:pulse-glow 2s ease-in-out infinite}
+
+.callout{background:var(--yellow);border-left:5px solid var(--black);padding:14px 20px;margin:28px 0}
+.callout p{font-size:18px;font-weight:700;color:var(--black);margin:0;line-height:1.5}
+
+.warning-box{border:2px solid var(--red);background:#fff5f5;padding:22px 28px;margin:28px 0}
+.warning-box .warn-label{font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.warning-box p{font-size:16px;color:var(--dark);margin:0}
+
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:14px;text-align:center}
+
+.divider{border:none;border-top:2px solid var(--border);margin:40px 0}
+
+/* Translator tool */
+.tool-notice{background:var(--yellow);border:2px solid var(--black);padding:20px 24px;margin:0 0 28px}
+.tool-notice p{font-size:14px;color:var(--dark);margin-bottom:8px;line-height:1.6}
+.tool-notice p:last-child{margin-bottom:0}
+.tool-notice strong{color:var(--black)}
+
+.tool-label{font-size:13px;font-weight:700;color:var(--black);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:8px}
+
+textarea{width:100%;border:2px solid var(--border);padding:16px;font-family:var(--sans);font-size:16px;line-height:1.65;color:var(--dark);resize:vertical;min-height:180px;background:var(--white);transition:border-color .15s}
+textarea:focus{outline:none;border-color:var(--blue)}
+textarea::placeholder{color:var(--light)}
+
+.char-count{font-size:12px;color:var(--light);text-align:right;margin-top:6px}
+.char-count.warn{color:var(--red)}
+
+.translate-btn{margin-top:20px;width:100%;padding:20px;font-size:18px}
+
+.result-box{margin-top:32px;display:none}
+.result-box.visible{display:block}
+.result-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.result-content{border:2px solid var(--border);padding:24px 28px;background:var(--bg);font-size:16px;line-height:1.8;color:var(--dark);white-space:pre-wrap}
+.result-content p{font-size:16px}
+
+.result-cta{margin-top:28px;border:3px solid var(--black);padding:28px 24px;text-align:center;background:var(--white)}
+.result-cta h3{font-size:clamp(18px,2.5vw,24px);font-weight:900;color:var(--black);margin-bottom:10px;text-align:center}
+.result-cta p{font-size:15px;color:var(--mid);margin-bottom:20px}
+
+.loading{display:none;text-align:center;padding:32px 0}
+.loading.visible{display:block}
+.spinner{display:inline-block;width:36px;height:36px;border:4px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading p{color:var(--mid);font-size:15px}
+
+.error-box{display:none;border:2px solid var(--red);background:#fff5f5;padding:20px 24px;margin-top:20px}
+.error-box.visible{display:block}
+.error-box p{font-size:15px;color:var(--red);margin:0}
+
+.faq{margin:0}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:17px;font-weight:700;color:var(--black);margin-bottom:8px}
+.faq-a{font-size:15px;color:var(--mid);line-height:1.75;margin:0}
+
+.foot{background:var(--black);padding:24px 60px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:center}
+.foot-b{font-size:14px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.06em}
+.foot-l{display:flex;gap:18px;justify-content:center}
+.foot-l a{font-size:13px;color:rgba(255,255,255,.55);text-decoration:none}
+.foot-l a:hover{color:#fff}
+.foot-d{font-size:11px;color:rgba(255,255,255,.38);text-align:right;line-height:1.7}
+
+.refs{background:var(--bg);padding:16px 60px;border-top:1px solid var(--border)}
+.refs p{font-size:11px;color:var(--light);line-height:1.8;margin:0;text-align:center}
+
+@media(max-width:768px){
+.sec{padding:40px 36px}
+.logo-bar{padding:12px 36px}
+.refs{padding:16px 36px}
+.foot{padding:20px 36px}
+}
+@media(max-width:520px){
+.sec{padding:28px 18px}
+.logo-bar{padding:12px 18px;flex-direction:column;gap:4px;text-align:center}
+.logo-tagline{display:none}
+.foot{grid-template-columns:1fr;text-align:center;padding:20px 18px}
+.foot-l{justify-content:center}
+.foot-d{text-align:center}
+.refs{padding:14px 18px}
+.btn-blue,.btn-green{font-size:15px;padding:16px 20px;width:100%;display:block;text-align:center}
+.result-content{padding:18px 16px}
+.tool-notice{padding:16px 18px}
+}
+</style>
+</head>
+<body>
+<main class="page-wrap">
+
+<div class="top-bar">Litigant in Person Support &middot; By Phone, Zoom or In-Court &middot; England, Wales &amp; Northern Ireland</div>
+
+<div class="logo-bar">
+  <div class="logo" style="display:flex;align-items:center;gap:8px">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="50 33 120 137" style="height:22px;width:auto;flex-shrink:0"><polygon fill="#222222" points="110,36.08 129.43,113.96 110,110.66 90.57,113.96"/><polygon fill="#222222" points="112.64,93.526 166.76,110 112.64,126.474 110,110"/><polygon fill="#222222" points="92.682,109.34 110,110 127.318,109.34 110,166.76"/><polygon fill="#222222" points="107.36,93.526 110,110 107.36,126.474 53.24,110"/><polygon fill="#ffffff" points="110,106.04 113.96,110 110,113.96 106.04,110"/></svg>Court <span>Compass</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="50 33 120 137" style="height:22px;width:auto;flex-shrink:0"><polygon fill="#222222" points="110,36.08 129.43,113.96 110,110.66 90.57,113.96"/><polygon fill="#222222" points="112.64,93.526 166.76,110 112.64,126.474 110,110"/><polygon fill="#222222" points="92.682,109.34 110,110 127.318,109.34 110,166.76"/><polygon fill="#222222" points="107.36,93.526 110,110 107.36,126.474 53.24,110"/><polygon fill="#ffffff" points="110,106.04 113.96,110 110,113.96 106.04,110"/></svg>
+  </div>
+  <div class="logo-tagline">Family Court Intelligence. England, Wales &amp; Northern Ireland</div>
+</div>
+
+<div class="sec sec-white">
+  <span class="eyebrow">Free tool from Court Compass</span>
+  <h1>Legal Letter Translator</h1>
+  <p style="text-align:center;color:var(--mid);max-width:580px;margin:0 auto 32px">You got a letter. You don't know what it means. Describe what it says in plain words and get a plain-English explanation of what it actually means and what typically happens next.</p>
+
+  <div class="tool-notice">
+    <p><strong>Before you describe your letter</strong></p>
+    <p>Describe what your letter says in your own words. <strong>Do not include names, addresses, dates of birth, case numbers, or any identifying details.</strong> Use labels like "my ex", "the other party", "Child A", "the court".</p>
+    <p>This tool explains what your letter appears to mean. <strong>It is not legal advice and may be wrong or incomplete.</strong> Do not rely on it for deadlines, court orders, safeguarding issues, or decisions about what to do next without checking with a qualified person. Your description is sent to an AI for processing. Court Compass does not save it.</p>
+  </div>
+
+  <label class="tool-label" for="letter-input">Describe your letter</label>
+  <textarea id="letter-input" maxlength="2000" placeholder="For example: I got a letter from the court saying I have to attend a hearing in three weeks and file a statement before then. It mentions something about a section 7 report being ordered. I don't know what a section 7 report is or what I'm supposed to do."></textarea>
+  <div class="char-count" id="char-count">0 / 2000 characters</div>
+
+  <button class="btn-blue btn-pulse translate-btn" id="translate-btn" onclick="translate()">Translate My Letter</button>
+
+  <div class="error-box" id="error-box">
+    <p id="error-text">Something went wrong. Please try again.</p>
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Translating&hellip; this takes a few seconds.</p>
+  </div>
+
+  <div id="email-gate" style="display:none;margin-top:28px;border:3px solid var(--black);padding:28px 24px;background:var(--white)">
+    <h3 style="font-size:20px;font-weight:900;margin-bottom:10px;text-align:center">One more translation left — enter your email to continue</h3>
+    <p style="font-size:15px;color:var(--mid);text-align:center;margin-bottom:20px">Your second translation is free. Enter your email and we'll send you it, plus occasional family court guidance from John.</p>
+    <label class="tool-label" for="email-input">Your email address</label>
+    <input type="email" id="email-input" placeholder="you@example.com" style="width:100%;border:2px solid var(--border);padding:14px 16px;font-family:var(--sans);font-size:16px;color:var(--dark);background:var(--white);transition:border-color .15s" onfocus="this.style.outlineStyle='none';this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
+    <button class="btn-green" style="margin-top:14px;width:100%;padding:18px;font-size:17px" onclick="submitWithEmail()">Get My Explanation &rarr;</button>
+    <p style="font-size:12px;color:var(--light);margin-top:10px;text-align:center">We do not share your details. Unsubscribe any time. See our <a href="/privacy.html" style="color:var(--light)">privacy policy</a>.</p>
+  </div>
+
+  <div class="result-box" id="result-box">
+    <p class="result-label">Plain-English explanation</p>
+    <div class="result-content" id="result-content"></div>
+
+    <div class="result-cta">
+      <h3>Now You Know What It Means. But What Do You Do About It?</h3>
+      <p>Knowing what a letter says is not the same as knowing how to respond to it. John has been inside family courts for 30 years. He knows what the court needs to hear from you next &mdash; and what will go wrong if they don't hear it.</p>
+      <a class="btn-green btn-pulse" href="https://courtcompass.co.uk/#book" style="font-size:17px;padding:18px 32px;display:inline-block">Get John On Your Side &rarr;</a>
+      <p style="margin-top:12px;font-size:12px;color:var(--light)">Sessions from &pound;297 &bull; England, Wales and Northern Ireland &bull; Family court matters</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec sec-gray">
+  <h2>How It Works</h2>
+  <hr class="divider">
+  <div class="faq">
+    <div class="faq-item">
+      <p class="faq-q">Why can't I just paste the letter in?</p>
+      <p class="faq-a">Family court letters contain names, case numbers, children's details and information that should stay private. Describing the letter in your own words gives you the same explanation without putting sensitive information into an AI tool. It also forces you to focus on what actually matters rather than the legal language that is designed to confuse you.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Is this legal advice?</p>
+      <p class="faq-a">No. This tool explains what family court correspondence typically means in plain English. It does not tell you what to do, predict your outcome, or substitute for speaking to a qualified person. John Junk is not a practising solicitor or barrister. Court Compass provides information, preparation, and support.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">What happens to what I type?</p>
+      <p class="faq-a">Your description is sent to an AI to generate the explanation and then discarded. Court Compass does not store it in a database or client records. It does not go into your name, your email list, or any CRM. The AI provider applies its own data handling policy.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">The explanation said something that worries me. What do I do?</p>
+      <p class="faq-a">That is exactly the situation John exists for. If the explanation has raised something urgent &mdash; a deadline, an order, a safeguarding concern &mdash; do not rely on this tool alone. Book a session and get case-specific guidance from someone who has been inside family courts for thirty years.</p>
+    </div>
+  </div>
+</div>
+
+<div class="refs">
+  <p>Court Compass is not a law firm. John Junk LL.M is not a practising solicitor or barrister. Nothing on this page or produced by this tool constitutes legal advice. &bull; <a href="/privacy.html" style="color:var(--light)">Privacy Policy</a></p>
+</div>
+
+<div class="foot">
+  <div class="foot-b">Court Compass</div>
+  <div class="foot-l">
+    <a href="https://courtcompass.co.uk">Home</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="mailto:support@courtcompass.co.uk">Contact</a>
+  </div>
+  <div class="foot-d">England, Wales &amp; Northern Ireland<br>&copy; Court Compass</div>
+</div>
+
+</main>
+
+<script>
+var textarea = document.getElementById('letter-input');
+var charCount = document.getElementById('char-count');
+
+textarea.addEventListener('input', function() {
+  var n = textarea.value.length;
+  charCount.textContent = n + ' / 2000 characters';
+  charCount.className = 'char-count' + (n > 1800 ? ' warn' : '');
+});
+
+function translate() {
+  var input = textarea.value.trim();
+  if (!input || input.length < 20) {
+    showError('Please describe your letter in a bit more detail so we can explain it properly.');
+    return;
+  }
+
+  hideError();
+  hideResult();
+  showLoading(true);
+
+  fetch('/api/translate', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({text: input})
+  })
+  .then(function(res) {
+    if (!res.ok) return res.json().then(function(d){ throw new Error(d.error || 'Server error'); });
+    return res.json();
+  })
+  .then(function(data) {
+    showLoading(false);
+    if (data.requireEmail) {
+      document.getElementById('email-gate').style.display = 'block';
+      document.getElementById('email-gate').scrollIntoView({behavior:'smooth',block:'start'});
+    } else if (data.error) {
+      showError(data.error);
+    } else {
+      showResult(data.explanation);
+    }
+  })
+  .catch(function(err) {
+    showLoading(false);
+    showError(err.message || 'Something went wrong. Please try again in a moment.');
+  });
+}
+
+function submitWithEmail() {
+  var email = document.getElementById('email-input').value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showError('Please enter a valid email address.');
+    return;
+  }
+
+  var input = textarea.value.trim();
+  document.getElementById('email-gate').style.display = 'none';
+  hideError();
+  showLoading(true);
+
+  fetch('/api/translate', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({text: input, email: email})
+  })
+  .then(function(res) {
+    if (!res.ok) return res.json().then(function(d){ throw new Error(d.error || 'Server error'); });
+    return res.json();
+  })
+  .then(function(data) {
+    showLoading(false);
+    if (data.error) {
+      showError(data.error);
+    } else {
+      showResult(data.explanation);
+    }
+  })
+  .catch(function(err) {
+    showLoading(false);
+    showError(err.message || 'Something went wrong. Please try again in a moment.');
+  });
+}
+
+function showLoading(on) {
+  document.getElementById('loading').className = 'loading' + (on ? ' visible' : '');
+  document.getElementById('translate-btn').disabled = on;
+}
+
+function showResult(text) {
+  var box = document.getElementById('result-box');
+  var content = document.getElementById('result-content');
+  content.textContent = text;
+  box.className = 'result-box visible';
+  box.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+function hideResult() {
+  document.getElementById('result-box').className = 'result-box';
+}
+
+function showError(msg) {
+  var box = document.getElementById('error-box');
+  document.getElementById('error-text').textContent = msg;
+  box.className = 'error-box visible';
+}
+
+function hideError() {
+  document.getElementById('error-box').className = 'error-box';
+}
+</script>
+</body>
+</html>
