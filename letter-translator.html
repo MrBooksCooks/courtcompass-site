@@ -261,7 +261,7 @@ function translate() {
   hideResult();
   showLoading(true);
 
-  fetch('/api/translate', {
+  fetch('https://sparkling-bush-8877.thomasjohnjunk.workers.dev/api/translate', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({text: input})
@@ -299,7 +299,7 @@ function submitWithEmail() {
   hideError();
   showLoading(true);
 
-  fetch('/api/translate', {
+  fetch('https://sparkling-bush-8877.thomasjohnjunk.workers.dev/api/translate', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({text: input, email: email})
