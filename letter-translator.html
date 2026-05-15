@@ -168,6 +168,13 @@ textarea::placeholder{color:var(--light)}
   <textarea id="letter-input" maxlength="8000" placeholder="For example: I got a letter from the court saying I have to attend a hearing in three weeks and file a statement before then. It mentions something about a section 7 report being ordered. I don't know what a section 7 report is or what I'm supposed to do."></textarea>
   <div class="char-count" id="char-count">0 / 8000 characters</div>
 
+  <div style="margin-top:20px">
+    <label class="tool-label" for="email-input">Your email address</label>
+    <input type="email" id="email-input" placeholder="you@example.com" style="width:100%;border:2px solid var(--border);padding:14px 16px;font-family:var(--sans);font-size:16px;color:var(--dark);background:var(--white);transition:border-color .15s" onfocus="this.style.outlineStyle='none';this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
+    <input type="text" name="website" id="website" style="display:none" tabindex="-1" autocomplete="off">
+    <p style="font-size:12px;color:var(--light);margin-top:8px">We will send a confirmation email. Click the link to verify your address. We do not share your details. Unsubscribe any time. See our <a href="/privacy.html" style="color:var(--light)">privacy policy</a>.</p>
+  </div>
+
   <button class="btn-blue btn-pulse translate-btn" id="translate-btn" onclick="runTranslate()">Translate My Letter</button>
 
   <div class="error-box" id="error-box">
@@ -177,16 +184,6 @@ textarea::placeholder{color:var(--light)}
   <div class="loading" id="loading">
     <div class="spinner"></div>
     <p>Translating&hellip; this takes a few seconds.</p>
-  </div>
-
-  <div id="email-gate" style="display:none;margin-top:28px;border:3px solid var(--black);padding:28px 24px;background:var(--white)">
-    <h3 style="font-size:20px;font-weight:900;margin-bottom:10px;text-align:center">One more translation left — enter your email to continue</h3>
-    <p style="font-size:15px;color:var(--mid);text-align:center;margin-bottom:20px">Your second translation is free. Enter your email and we'll send you it, plus occasional family court guidance from John.</p>
-    <label class="tool-label" for="email-input">Your email address</label>
-    <input type="email" id="email-input" placeholder="you@example.com" style="width:100%;border:2px solid var(--border);padding:14px 16px;font-family:var(--sans);font-size:16px;color:var(--dark);background:var(--white);transition:border-color .15s" onfocus="this.style.outlineStyle='none';this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
-    <input type="text" name="website" id="website" style="display:none" tabindex="-1" autocomplete="off">
-    <button class="btn-green" style="margin-top:14px;width:100%;padding:18px;font-size:17px" onclick="submitWithEmail()">Get My Explanation &rarr;</button>
-    <p style="font-size:12px;color:var(--light);margin-top:10px;text-align:center">We will send you a confirmation email. Click the link in it to verify your address. We do not share your details. Unsubscribe any time. See our <a href="/privacy.html" style="color:var(--light)">privacy policy</a>.</p>
   </div>
 
   <div class="result-box" id="result-box">
@@ -253,51 +250,19 @@ textarea.addEventListener('input', function() {
 
 function runTranslate() {
   var input = textarea.value.trim();
+  var email = document.getElementById('email-input').value.trim();
+
   if (!input || input.length < 20) {
     showError('Please describe your letter in a bit more detail so we can explain it properly.');
     return;
   }
-
-  hideError();
-  hideResult();
-  showLoading(true);
-
-  fetch('https://sparkling-bush-8877.thomasjohnjunk.workers.dev/api/translate', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({text: input})
-  })
-  .then(function(res) {
-    if (!res.ok) return res.json().then(function(d){ throw new Error(d.error || 'Server error'); });
-    return res.json();
-  })
-  .then(function(data) {
-    showLoading(false);
-    if (data.requireEmail) {
-      document.getElementById('email-gate').style.display = 'block';
-      document.getElementById('email-gate').scrollIntoView({behavior:'smooth',block:'start'});
-    } else if (data.error) {
-      showError(data.error);
-    } else {
-      showResult(data.explanation);
-    }
-  })
-  .catch(function(err) {
-    showLoading(false);
-    showError(err.message || 'Something went wrong. Please try again in a moment.');
-  });
-}
-
-function submitWithEmail() {
-  var email = document.getElementById('email-input').value.trim();
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     showError('Please enter a valid email address.');
     return;
   }
 
-  var input = textarea.value.trim();
-  document.getElementById('email-gate').style.display = 'none';
   hideError();
+  hideResult();
   showLoading(true);
 
   fetch('https://sparkling-bush-8877.thomasjohnjunk.workers.dev/api/translate', {
@@ -313,8 +278,6 @@ function submitWithEmail() {
     showLoading(false);
     if (data.error) {
       showError(data.error);
-    } else if (data.pendingConfirmation) {
-      showError('Check your inbox - we have sent you a confirmation email. Click the link in it and your explanation will appear.');
     } else {
       showResult(data.explanation);
     }
