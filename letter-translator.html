@@ -148,7 +148,7 @@ textarea::placeholder{color:var(--light)}
 
 <div class="logo-bar">
   <div class="logo" style="display:flex;align-items:center;gap:8px">
-    <svg xmlns="http://www.w3.org/20000/svg" viewBox="50 33 120 137" style="height:22px;width:auto;flex-shrink:0"><polygon fill="#222222" points="110,36.08 129.43,113.96 110,110.66 90.57,113.96"/><polygon fill="#222222" points="112.64,93.526 166.76,110 112.64,126.474 110,110"/><polygon fill="#222222" points="92.682,109.34 110,110 127.318,109.34 110,166.76"/><polygon fill="#222222" points="107.36,93.526 110,110 107.36,126.474 53.24,110"/><polygon fill="#ffffff" points="110,106.04 113.96,110 110,113.96 106.04,110"/></svg>Court <span>Compass</span><svg xmlns="http://www.w3.org/20000/svg" viewBox="50 33 120 137" style="height:22px;width:auto;flex-shrink:0"><polygon fill="#222222" points="110,36.08 129.43,113.96 110,110.66 90.57,113.96"/><polygon fill="#222222" points="112.64,93.526 166.76,110 112.64,126.474 110,110"/><polygon fill="#222222" points="92.682,109.34 110,110 127.318,109.34 110,166.76"/><polygon fill="#222222" points="107.36,93.526 110,110 107.36,126.474 53.24,110"/><polygon fill="#ffffff" points="110,106.04 113.96,110 110,113.96 106.04,110"/></svg>
+    <svg xmlns="http://www.w3.org/8000/svg" viewBox="50 33 120 137" style="height:22px;width:auto;flex-shrink:0"><polygon fill="#222222" points="110,36.08 129.43,113.96 110,110.66 90.57,113.96"/><polygon fill="#222222" points="112.64,93.526 166.76,110 112.64,126.474 110,110"/><polygon fill="#222222" points="92.682,109.34 110,110 127.318,109.34 110,166.76"/><polygon fill="#222222" points="107.36,93.526 110,110 107.36,126.474 53.24,110"/><polygon fill="#ffffff" points="110,106.04 113.96,110 110,113.96 106.04,110"/></svg>Court <span>Compass</span><svg xmlns="http://www.w3.org/8000/svg" viewBox="50 33 120 137" style="height:22px;width:auto;flex-shrink:0"><polygon fill="#222222" points="110,36.08 129.43,113.96 110,110.66 90.57,113.96"/><polygon fill="#222222" points="112.64,93.526 166.76,110 112.64,126.474 110,110"/><polygon fill="#222222" points="92.682,109.34 110,110 127.318,109.34 110,166.76"/><polygon fill="#222222" points="107.36,93.526 110,110 107.36,126.474 53.24,110"/><polygon fill="#ffffff" points="110,106.04 113.96,110 110,113.96 106.04,110"/></svg>
   </div>
   <div class="logo-tagline">Family Court Intelligence. England, Wales &amp; Northern Ireland</div>
 </div>
@@ -165,8 +165,8 @@ textarea::placeholder{color:var(--light)}
   </div>
 
   <label class="tool-label" for="letter-input">Describe your letter</label>
-  <textarea id="letter-input" maxlength="20000" placeholder="For example: I got a letter from the court saying I have to attend a hearing in three weeks and file a statement before then. It mentions something about a section 7 report being ordered. I don't know what a section 7 report is or what I'm supposed to do."></textarea>
-  <div class="char-count" id="char-count">0 / 20000 characters</div>
+  <textarea id="letter-input" maxlength="8000" placeholder="For example: I got a letter from the court saying I have to attend a hearing in three weeks and file a statement before then. It mentions something about a section 7 report being ordered. I don't know what a section 7 report is or what I'm supposed to do."></textarea>
+  <div class="char-count" id="char-count">0 / 8000 characters</div>
 
   <button class="btn-blue btn-pulse translate-btn" id="translate-btn" onclick="runTranslate()">Translate My Letter</button>
 
@@ -246,7 +246,7 @@ var charCount = document.getElementById('char-count');
 
 textarea.addEventListener('input', function() {
   var n = textarea.value.length;
-  charCount.textContent = n + ' / 20000 characters';
+  charCount.textContent = n + ' / 8000 characters';
   charCount.className = 'char-count' + (n > 1800 ? ' warn' : '');
 });
 
