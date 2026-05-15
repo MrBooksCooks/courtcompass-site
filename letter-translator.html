@@ -141,7 +141,7 @@ textarea::placeholder{color:var(--light)}
 }
 </style>
 </head>
-<body onload="window.scrollTo(0,0)">
+<body>
 <main class="page-wrap">
 
 <a href="https://courtcompass.co.uk" style="text-decoration:none;color:inherit;display:block">
@@ -249,7 +249,31 @@ var charCount = document.getElementById('char-count');
 textarea.addEventListener('input', function() {
   var n = textarea.value.length;
   charCount.textContent = n + ' / 8000 characters';
-  charCount.className = 'char-count' + (n > 1800 ? ' warn' : '');
+  charCount.className = 'char-count' + (n > 7000 ? ' warn' : '');
+});
+
+// On page load, check for confirmation token in URL
+window.addEventListener('load', function() {
+  window.scrollTo(0, 0);
+  var params = new URLSearchParams(window.location.search);
+  var token = params.get('token');
+  if (token) {
+    showLoading(true, 'Confirming your email and loading your translation…');
+    fetch('https://sparkling-bush-8877.thomasjohnjunk.workers.dev/api/confirm?token=' + encodeURIComponent(token))
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        showLoading(false);
+        if (data.explanation) {
+          showResult(data.explanation);
+        } else {
+          showError(data.error || 'This link has expired. Please submit a new translation.');
+        }
+      })
+      .catch(function() {
+        showLoading(false);
+        showError('Something went wrong loading your translation. Please try again.');
+      });
+  }
 });
 
 function runTranslate() {
@@ -267,7 +291,7 @@ function runTranslate() {
 
   hideError();
   hideResult();
-  showLoading(true);
+  showLoading(true, 'Processing… this takes a few seconds.');
 
   fetch('https://sparkling-bush-8877.thomasjohnjunk.workers.dev/api/translate', {
     method: 'POST',
@@ -282,7 +306,9 @@ function runTranslate() {
     showLoading(false);
     if (data.error) {
       showError(data.error);
-    } else {
+    } else if (data.pending) {
+      showPending(email);
+    } else if (data.explanation) {
       showResult(data.explanation);
     }
   })
@@ -292,9 +318,23 @@ function runTranslate() {
   });
 }
 
-function showLoading(on) {
-  document.getElementById('loading').className = 'loading' + (on ? ' visible' : '');
+function showLoading(on, msg) {
+  var el = document.getElementById('loading');
+  if (on) {
+    el.querySelector('p').textContent = msg || 'Processing…';
+    el.className = 'loading visible';
+  } else {
+    el.className = 'loading';
+  }
   document.getElementById('translate-btn').disabled = on;
+}
+
+function showPending(email) {
+  var box = document.getElementById('result-box');
+  var content = document.getElementById('result-content');
+  content.innerHTML = '<strong>Check your inbox.</strong><br><br>We have sent a confirmation email to <strong>' + email + '</strong>.<br><br>Click the link in that email to confirm your address and read your translation. The link expires in 24 hours.<br><br>If you do not see it, check your junk or spam folder.';
+  box.className = 'result-box visible';
+  box.scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 
 function showResult(text) {
