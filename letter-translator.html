@@ -184,8 +184,9 @@ textarea::placeholder{color:var(--light)}
     <p style="font-size:15px;color:var(--mid);text-align:center;margin-bottom:20px">Your second translation is free. Enter your email and we'll send you it, plus occasional family court guidance from John.</p>
     <label class="tool-label" for="email-input">Your email address</label>
     <input type="email" id="email-input" placeholder="you@example.com" style="width:100%;border:2px solid var(--border);padding:14px 16px;font-family:var(--sans);font-size:16px;color:var(--dark);background:var(--white);transition:border-color .15s" onfocus="this.style.outlineStyle='none';this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
+    <input type="text" name="website" id="website" style="display:none" tabindex="-1" autocomplete="off">
     <button class="btn-green" style="margin-top:14px;width:100%;padding:18px;font-size:17px" onclick="submitWithEmail()">Get My Explanation &rarr;</button>
-    <p style="font-size:12px;color:var(--light);margin-top:10px;text-align:center">We do not share your details. Unsubscribe any time. See our <a href="/privacy.html" style="color:var(--light)">privacy policy</a>.</p>
+    <p style="font-size:12px;color:var(--light);margin-top:10px;text-align:center">We will send you a confirmation email. Click the link in it to verify your address. We do not share your details. Unsubscribe any time. See our <a href="/privacy.html" style="color:var(--light)">privacy policy</a>.</p>
   </div>
 
   <div class="result-box" id="result-box">
@@ -302,7 +303,7 @@ function submitWithEmail() {
   fetch('https://sparkling-bush-8877.thomasjohnjunk.workers.dev/api/translate', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({text: input, email: email})
+    body: JSON.stringify({text: input, email: email, website: document.getElementById('website').value})
   })
   .then(function(res) {
     if (!res.ok) return res.json().then(function(d){ throw new Error(d.error || 'Server error'); });
@@ -312,6 +313,8 @@ function submitWithEmail() {
     showLoading(false);
     if (data.error) {
       showError(data.error);
+    } else if (data.pendingConfirmation) {
+      showError('Check your inbox - we have sent you a confirmation email. Click the link in it and your explanation will appear.');
     } else {
       showResult(data.explanation);
     }
