@@ -177,7 +177,11 @@ textarea::placeholder{color:var(--light)}
     <label class="tool-label" for="email-input">Your email address</label>
     <input type="email" id="email-input" placeholder="you@example.com" style="width:100%;border:2px solid var(--border);padding:14px 16px;font-family:var(--sans);font-size:16px;color:var(--dark);background:var(--white);transition:border-color .15s" onfocus="this.style.outlineStyle='none';this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
     <input type="text" name="website" id="website" style="display:none" tabindex="-1" autocomplete="off">
-    <p style="font-size:12px;color:var(--light);margin-top:8px">We will email you a link to confirm your address and unlock your translation. By confirming, you are joining the Court Compass mailing list. We will send you information about family court and our services. You can unsubscribe at any time. We do not share your details. See our <a href="/privacy.html" style="color:var(--light)">privacy policy</a>.</p>
+    <p style="font-size:12px;color:var(--light);margin-top:8px">We will email you a link to confirm your address and unlock your translation. We do not share your details. See our <a href="/privacy.html" style="color:var(--light)">privacy policy</a>.</p>
+    <label style="display:flex;align-items:flex-start;gap:10px;margin-top:14px;cursor:pointer">
+      <input type="checkbox" id="marketing-opt-in" style="margin-top:3px;width:18px;height:18px;flex-shrink:0;cursor:pointer">
+      <span style="font-size:13px;color:var(--dark);line-height:1.5">I agree to receive emails from Court Compass about family court, McKenzie Friend support, and our services. You can unsubscribe at any time.</span>
+    </label>
   </div>
 
   <button class="btn-blue btn-pulse translate-btn" id="translate-btn" onclick="runTranslate()">Translate My Letter</button>
@@ -290,6 +294,12 @@ function runTranslate() {
     return;
   }
 
+  var optIn = document.getElementById('marketing-opt-in').checked;
+  if (!optIn) {
+    showError('Please tick the box to confirm you are happy to receive emails from Court Compass.');
+    return;
+  }
+
   hideError();
   hideResult();
   showLoading(true, 'Processing… this takes a few seconds.');
@@ -297,7 +307,7 @@ function runTranslate() {
   fetch('https://sparkling-bush-8877.thomasjohnjunk.workers.dev/api/translate', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({text: input, email: email, website: document.getElementById('website').value})
+    body: JSON.stringify({text: input, email: email, website: document.getElementById('website').value, optIn: true})
   })
   .then(function(res) {
     if (!res.ok) return res.json().then(function(d){ throw new Error(d.error || 'Server error'); });
